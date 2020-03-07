@@ -1,0 +1,17 @@
+{
+  "root": [],
+  "actors": [
+    {
+      "components": [
+        ["DebugRenderer"],
+        ["TakeSnapshot", 15],
+        ["ToggleFrameFreezeMode"],
+        ["EnableDebug"],
+        ["ToggleEditMode"]
+      ]
+    },
+    {
+      "components": [["FramerateCounter"]]
+    }
+  ]
+}
