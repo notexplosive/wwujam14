@@ -7,6 +7,7 @@ function Movement:setup(inputComponent)
 
 	self.velocity = Vector.new()
 	self.moveSpeed = 600 -- per second
+	self.actor.Body:setFixedRotation(true)
 end
 
 function Movement:update(dt)
@@ -20,9 +21,9 @@ function Movement:update(dt)
 		end
 	end
 
-	inputVector = inputVector:normalized() * self.moveSpeed * dt
+	inputVector = inputVector:normalized() * self.moveSpeed * love.physics.getMeter() * dt
 
-	self.actor:move(inputVector)
+	self.actor.Body:setLinearVelocity(inputVector)
 end
 
 return Movement
