@@ -16,15 +16,15 @@ local sceneLayers = require("nx/scene-layers")
 require("nx/component-registry")
 
 function love.update(dt)
-    for _, scene in sceneLayers:eachInReverseDrawOrder() do
-        scene:update(dt, true)
-    end
+	for _, scene in sceneLayers:eachInReverseDrawOrder() do
+		scene:update(dt, true)
+	end
 end
 
 function love.draw()
-    for _, scene in sceneLayers:eachInDrawOrder() do
-        scene:draw()
-    end
+	for _, scene in sceneLayers:eachInDrawOrder() do
+		scene:draw()
+	end
 end
 
 local Test = require("nx/test")
@@ -32,7 +32,12 @@ Test.runComponentTests()
 
 local Scene = require("nx/game/scene")
 uiScene = Scene.fromPath("ui")
-gameScene = Scene.fromPath("game")
+gameScene = Scene.new()
+
+local player = gameScene:addActor()
+player:addComponent(Components.PlayerMovement)
+player:addComponent(Components.BoundingBox)
+player:addComponent(Components.BoundingBoxRenderer)
 
 sceneLayers:add(gameScene)
 sceneLayers:add(uiScene)
