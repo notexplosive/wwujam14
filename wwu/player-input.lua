@@ -1,23 +1,23 @@
-local PlayerMovement = {}
+local PlayerInput = {}
 
-registerComponent(PlayerMovement, "PlayerMovement")
+registerComponent(PlayerInput, "PlayerInput")
 
-function PlayerMovement:awake()
+function PlayerInput:awake()
 	self.inputState = {up = false, down = false, left = false, right = false}
 end
 
-function PlayerMovement:update(dt)
+function PlayerInput:update(dt)
 	debugLog(self.inputState.up, self.inputState.down, self.inputState.left, self.inputState.right)
 end
 
-function PlayerMovement:onKeyPress(button, scancode, wasReleased)
+function PlayerInput:onKeyPress(button, scancode, wasReleased)
 	if button == "up" or button == "down" or button == "left" or button == "right" then
 		self.inputState[button] = not wasReleased
 	end
 end
 
-function PlayerMovement:getInputState()
+function PlayerInput:getInputState()
 	return self.inputState
 end
 
-return PlayerMovement
+return PlayerInput
