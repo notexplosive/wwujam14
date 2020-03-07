@@ -32,12 +32,7 @@ Test.runComponentTests()
 
 local Scene = require("nx/game/scene")
 uiScene = Scene.fromPath("ui")
-gameScene = Scene.new()
-
-local player = gameScene:addActor()
-player:addComponent(Components.PlayerMovement)
-player:addComponent(Components.BoundingBox)
-player:addComponent(Components.BoundingBoxRenderer)
+gameScene = require("game-scene")
 
 sceneLayers:add(gameScene)
 sceneLayers:add(uiScene)
