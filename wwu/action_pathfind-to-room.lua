@@ -91,4 +91,8 @@ function PathfindToRoom:isReadyToInteract()
 	return door == self:getTargetDoor() and math.abs(direction) < 5
 end
 
+function PathfindToRoom:talkToResponse()
+	return "is going to " .. self.targetRoom.name
+end
+
 return PathfindToRoom

@@ -101,6 +101,7 @@ createItem(room2, 250, "fork")
 
 local gary = createNPC(room1, 300, "Gary")
 gary:addComponent(Components.PathfindToRoom, room3)
+gary:addComponent(Components.Plan)
 
 local john = createNPC(room2, 300, "John")
 john:addComponent(Components.Plan)

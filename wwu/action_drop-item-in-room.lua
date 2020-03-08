@@ -36,4 +36,8 @@ function DropItemInRoom:isFinished()
     return not self.actor.CanHoldItems:isHolding()
 end
 
+function DropItemInRoom:talkToResponse()
+    return "is setting down the " .. self.actor.CanHoldItems:getHeldItemName()
+end
+
 return DropItemInRoom

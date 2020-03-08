@@ -36,4 +36,8 @@ function GetItemInRoom:isReadyToInteract()
 	return item and item.Item.itemName == self.targetItemName
 end
 
+function GetItemInRoom:talkToResponse()
+	return "is grabbing a " .. self.targetItemName
+end
+
 return GetItemInRoom

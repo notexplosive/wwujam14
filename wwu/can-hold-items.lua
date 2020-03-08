@@ -43,6 +43,10 @@ function CanHoldItems:isHolding()
 	return self.currentHeldItem ~= nil
 end
 
+function CanHoldItems:getHeldItemName()
+	return self.currentHeldItem.Item.name
+end
+
 function CanHoldItems:pickUp(item)
 	debugLog(self.actor.name .. " picked up " .. item.Item.itemName)
 	self.currentHeldItem = item

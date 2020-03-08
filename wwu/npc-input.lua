@@ -23,6 +23,7 @@ end
 -- getDirection() -> signed integer, positive for right, negative for left, 0 for stopped
 -- isReadyToInteract() -> boolean, true if the action could be completed this frame
 -- isFinished() -> boolean, true if the action is satisfied
+-- talkToResponse() -> string that the player sees when talking to the NPC
 function NpcInput:calculateInputFromAction(actionComponent, dt)
 	local direction = actionComponent:getDirection()
 

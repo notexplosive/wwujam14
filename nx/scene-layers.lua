@@ -21,5 +21,15 @@ function SceneLayers:add(scene)
     append(self.list, scene)
 end
 
+function SceneLayers:set(index, scene)
+    self.list[index] = scene
+    return scene
+end
+
+function SceneLayers:get(index)
+    assert(self.list[index], "No scene at layer " .. index)
+    return self.list[index]
+end
+
 -- Singleton!
 return SceneLayers.new()
