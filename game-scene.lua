@@ -13,7 +13,6 @@ function createRoom(name, pos, size, imageName)
 	room.name = name
 	room:setPos(pos)
 	room:addComponent(Components.BoundingBox, size:wh())
-	room:addComponent(Components.BoundingBoxRenderer)
 	room:addComponent(Components.Room, 250)
 	room:addComponent(Components.TextRenderer, name)
 	room:addComponent(Components.BackgroundRenderer, imageName or "background-brick")
