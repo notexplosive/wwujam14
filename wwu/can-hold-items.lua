@@ -31,11 +31,6 @@ function CanHoldItems:onInteract()
 			self:pickUp(item)
 			return true
 		end
-	else
-		if self:isHolding() then
-			self:dropItem()
-			return true
-		end
 	end
 end
 
