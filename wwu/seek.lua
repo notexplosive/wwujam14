@@ -6,7 +6,7 @@ function Seek:setup()
 end
 
 function Seek:awake()
-    self.actor:addComponent(Components.PathfindToRoom, GLOBAL_ROOMS[3])
+    self.pendingSeekComponent = self.actor:addComponent(Components.PathfindToRoom, GLOBAL_ROOMS[3])
 end
 
 function Seek:draw(x, y)
@@ -24,10 +24,11 @@ function Seek:isOriginalPendingConditionMet()
 end
 
 function Seek:getPendingComponent()
-    return self.actor.PathfindToRoom
+    return self.pendingSeekComponent
 end
 
 function Seek:onDestroy()
+    self.pendingSeekComponent:destroy()
 end
 
 return Seek

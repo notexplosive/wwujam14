@@ -104,6 +104,7 @@ createItem(room2, 270, "spoon")
 
 local gary = createNPC(room1, 300, "Gary")
 gary.Plan:addAction(Components.GetItemInRoom, "spoon")
+gary.Plan:addAction(Components.PathfindToRoom, room4)
 
 local john = createNPC(room2, 300, "John")
 
