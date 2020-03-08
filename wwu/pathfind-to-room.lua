@@ -5,10 +5,15 @@ registerComponent(PathfindToRoom, "PathfindToRoom", {"Floorable"})
 function PathfindToRoom:setup(targetRoom)
 	self.targetRoom = targetRoom
 	self.path = {}
+	self:calculatePath()
 	assert(self.targetRoom)
 end
 
 function PathfindToRoom:update(dt)
+	self:calculatePath()
+end
+
+function PathfindToRoom:calculatePath()
 	local currentRoom = self.actor.Floorable:getCurrentRoom()
 	local visitedRooms = {}
 	visitedRooms[currentRoom.name] = true
