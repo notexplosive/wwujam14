@@ -11,16 +11,11 @@ function NpcInput:awake()
 end
 
 function NpcInput:update(dt)
-	if self.actor.PathfindToRoom then
-		self:calculateInputFromAction(self.actor.PathfindToRoom, dt)
-	end
-
-	if self.actor.GetItemInRoom then
-		self:calculateInputFromAction(self.actor.GetItemInRoom, dt)
-	end
-
-	if self.actor.DropItemInRoom then
-		self:calculateInputFromAction(self.actor.DropItemInRoom, dt)
+	if self.actor.Plan then
+		local pendingComponent = self.actor.Plan:getPendingComponent()
+		if pendingComponent then
+			self:calculateInputFromAction(pendingComponent, dt)
+		end
 	end
 end
 
