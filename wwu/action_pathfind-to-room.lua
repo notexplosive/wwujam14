@@ -3,15 +3,19 @@ local PathfindToRoom = {}
 registerComponent(PathfindToRoom, "PathfindToRoom", {"Floorable", "CanTraverseDoors"})
 
 function PathfindToRoom:setup(targetRoom)
-	self.targetRoom = targetRoom
-	self.path = {}
-	self:calculatePath()
-	assert(self.targetRoom)
+	self:assignTargetRoom(targetRoom)
 end
 
 function PathfindToRoom:update(dt)
 	assert(self.targetRoom)
 	self:calculatePath()
+end
+
+function PathfindToRoom:assignTargetRoom(targetRoom)
+	self.targetRoom = targetRoom
+	self.path = {}
+	self:calculatePath()
+	assert(self.targetRoom)
 end
 
 function PathfindToRoom:calculatePath()
