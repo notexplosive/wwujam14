@@ -16,7 +16,7 @@ function CameraIsOnMe:update(dt)
     local currentRoomActor = self.actor.Floorable:getCurrentRoom()
     if currentRoomActor then
         local roomWidth = currentRoomActor.BoundingBox:width()
-        local scale = 1920 / roomWidth
+        local scale = math.max(1, 1920 / roomWidth)
         self.cameraActor.Viewport:setScale(scale)
 
         local roomHeight = currentRoomActor.BoundingBox:height()

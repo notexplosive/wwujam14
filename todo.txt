@@ -1,3 +1,6 @@
+fix pathing bug
 doors player cannot access
+
+
 assets
 clock
