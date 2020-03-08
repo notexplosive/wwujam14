@@ -33,5 +33,6 @@
   "background-brick": ["Background Brick.png"],
   "person": ["Person.png"],
   "cake": ["Cake.png"],
-  "adrian": ["Adrian.png", 337, 739]
+  "adrian": ["Adrian.png", 337, 739],
+  "door": ["Door.png"]
 }

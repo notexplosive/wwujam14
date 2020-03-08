@@ -1,4 +1,3 @@
+doors player cannot access
 assets
-sprite animation
-file represenation of mansion
-file represenation of npc plan
+clock

@@ -72,16 +72,16 @@ function createNPC(room, x, name, spriteName)
 end
 
 function createDoorPair(room1, room1X, room2, room2X)
-	local doorWidth = 40
+	local doorWidth = 100
 	local door1 = scene:addActor()
 	door1:setPos(room1:pos().x + room1X, room1:pos().y)
 	door1:addComponent(Components.Collider, doorWidth)
-	--door1:addComponent(Components.ImageRenderer, "door")
+	door1:addComponent(Components.ImageRenderer, "door")
 
 	local door2 = scene:addActor()
 	door2:setPos(room2:pos().x + room2X, room2:pos().y)
 	door2:addComponent(Components.Collider, doorWidth)
-	--door2:addComponent(Components.ImageRenderer, "door")
+	door2:addComponent(Components.ImageRenderer, "door")
 
 	door1:addComponent(Components.Door, door2)
 	door2:addComponent(Components.Door, door1)
@@ -152,10 +152,11 @@ createDoorPair(GLOBAL_ROOMS[14], 375, GLOBAL_ROOMS[18], 50)
 
 local player = createPlayer(GLOBAL_ROOMS[1], 100)
 
+--[[
 createItem(GLOBAL_ROOMS[1], 160, "plate", "cake")
 createItem(GLOBAL_ROOMS[2], 250, "fork", "cake")
 createItem(GLOBAL_ROOMS[2], 350, "spoon", "cake")
-
+]]
 --[[
 local mary = createNPC(GLOBAL_ROOMS[1], 100, "Mary")
 ]]
