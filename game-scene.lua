@@ -39,11 +39,11 @@ function createPlayer(room, x)
 	player.name = "Player"
 	player:addComponent(Components.CanInteract)
 	player:addComponent(Components.PlayerInput)
+	player:addComponent(Components.CanTraverseDoors)
 	player:addComponent(Components.CanHoldItems)
 	player:addComponent(Components.CanTalkToNpcs)
 	player:addComponent(Components.Collider, 20)
 	player:addComponent(Components.Movement, player.PlayerInput)
-	player:addComponent(Components.CanTraverseDoors)
 
 	return player
 end
@@ -55,10 +55,10 @@ function createNPC(room, x, name)
 	npc:setPos(room:pos().x + x, room:pos().y)
 	npc:addComponent(Components.CanInteract)
 	npc:addComponent(Components.CanTraverseDoors)
+	npc:addComponent(Components.CanHoldItems)
 	npc:addComponent(Components.NpcInput)
 	npc:addComponent(Components.Collider, 20)
 	npc:addComponent(Components.Movement, npc.NpcInput)
-	npc:addComponent(Components.CanHoldItems)
 
 	return npc
 end
