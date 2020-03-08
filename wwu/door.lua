@@ -2,16 +2,16 @@ local Door = {}
 
 registerComponent(Door, "Door")
 
-function Door:setup()
+function Door:setup(destinationActor)
+	self.destinationActor = destinationActor
 end
 
-function Door:awake()
+function Door:getDestination()
+	return self.destinationActor:pos()
 end
 
-function Door:draw(x, y)
-end
-
-function Door:update(dt)
+function Door:getDestinationRoom()
+	return destinationActor.Collider:getCurrentRoom()
 end
 
 return Door
