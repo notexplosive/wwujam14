@@ -119,9 +119,9 @@ GLOBAL_ROOMS = {
 	createRoom("Courtyard", Vector.new(0, 3500), Size.new(500, 300), "background-brick"), --8
 	createRoom("Kitchen", Vector.new(0, 4000), Size.new(500, 300), "background-brick"), --9
 	createRoom("Living Room", Vector.new(0, 4500), Size.new(500, 300), "background-brick"), --10
-	createRoom("Hallway Downstairs Three", Vector.new(0, 5000), Size.new(500, 300), "background-brick"), --11
+	createRoom("Hallway Downstairs Two", Vector.new(0, 5000), Size.new(500, 300), "background-brick"), --11
 	createRoom("Rec Room", Vector.new(0, 5500), Size.new(750, 300), "background-brick"), --12
-	createRoom("Hallway Downstairs Five", Vector.new(0, 6000), Size.new(750, 300), "background-brick"), --13
+	createRoom("Hallway Downstairs Three", Vector.new(0, 6000), Size.new(750, 300), "background-brick"), --13
 	createRoom("Hallway Downstairs One", Vector.new(0, 6500), Size.new(750, 300), "background-brick"), --14
 	--Cult Room
 	createRoom("NPC ONE", Vector.new(0, 7000), Size.new(5000, 300), "background-brick"), --15
@@ -151,6 +151,33 @@ createDoorPair(GLOBAL_ROOMS[13], 700, GLOBAL_ROOMS[17], 50)
 createDoorPair(GLOBAL_ROOMS[14], 375, GLOBAL_ROOMS[18], 50)
 
 local player = createPlayer(GLOBAL_ROOMS[1], 100)
+--item name, item image
+createItem(GLOBAL_ROOMS[10], 160, "candle")
+createItem(GLOBAL_ROOMS[7], 160, "candle")
+createItem(GLOBAL_ROOMS[3], 160, "candle")
+createItem(GLOBAL_ROOMS[3], 160, "candle")
+createItem(GLOBAL_ROOMS[8], 160, "candle")
+createItem(GLOBAL_ROOMS[8], 160, "candle")
+createItem(GLOBAL_ROOMS[11], 160, "candle")
+createItem(GLOBAL_ROOMS[12], 160, "holly", "holly")
+createItem(GLOBAL_ROOMS[9], 160, "holly", "holly")
+createItem(GLOBAL_ROOMS[4], 160, "holly", "holly")
+createItem(GLOBAL_ROOMS[3], 160, "knife", "knife")
+--sword
+createItem(GLOBAL_ROOMS[9], 160, "knife", "knife")
+createItem(GLOBAL_ROOMS[9], 160, "knife", "knife")
+createItem(GLOBAL_ROOMS[13], 160, "chalk", "book")
+createItem(GLOBAL_ROOMS[12], 160, "chalk", "book")
+createItem(GLOBAL_ROOMS[9], 160, "organs", "cake")
+createItem(GLOBAL_ROOMS[8], 160, "bunny", "card")
+
+--createItem(GLOBAL_ROOMS[1], 160, "spork", "cake")
+
+createItem(GLOBAL_ROOMS[4], 160, "plant", "holly")
+createItem(GLOBAL_ROOMS[10], 160, "plant", "holly")
+createItem(GLOBAL_ROOMS[8], 160, "plant", "holly")
+createItem(GLOBAL_ROOMS[8], 160, "plant", "holly")
+createItem(GLOBAL_ROOMS[12], 160, "plant", "holly")
 
 --[[
 createItem(GLOBAL_ROOMS[1], 160, "plate", "cake")
