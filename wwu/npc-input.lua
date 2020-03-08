@@ -15,24 +15,12 @@ function NpcInput:update(dt)
 	if self.actor.PathfindToRoom then
 		local path = self.actor.PathfindToRoom.path
 		if path then
-			local nextRoom = self.actor.PathfindToRoom:getNextRoom()
-			local currentRoom = self.actor.Floorable:getCurrentRoom()
-			local targetDoor = nil
-			for i, door in ipairs(currentRoom.Room:getAllDoors()) do
-				if door.Door:getDestinationRoom() == nextRoom then
-					targetDoor = door
-					break
-				end
-			end
+			local dx = self.actor.PathfindToRoom:getDirection()
+			self.inputState.left = dx > 0
+			self.inputState.right = dx < 0
 
-			if targetDoor then
-				local dx = self.actor:pos().x - targetDoor:pos().x
-				self.inputState.left = dx > 0
-				self.inputState.right = dx < 0
-
-				if math.abs(dx) < 5 then
-					self.actor.CanInteract:interact()
-				end
+			if math.abs(dx) < 5 and not self.actor.PathfindToRoom:isInTargetRoom() then
+				self.actor.CanInteract:interact()
 			end
 		end
 	end

@@ -51,4 +51,29 @@ function PathfindToRoom:getNextRoom()
 	end
 end
 
+function PathfindToRoom:isInTargetRoom()
+	return #self.path == 1
+end
+
+function PathfindToRoom:getTargetDoor()
+	local nextRoom = self.actor.PathfindToRoom:getNextRoom()
+	local currentRoom = self.actor.Floorable:getCurrentRoom()
+	for i, door in ipairs(currentRoom.Room:getAllDoors()) do
+		if door.Door:getDestinationRoom() == nextRoom then
+			return door
+		end
+	end
+
+	return nilisInTargetRoom
+end
+
+function PathfindToRoom:getDirection()
+	local targetDoor = self:getTargetDoor()
+	if targetDoor then
+		return self.actor:pos().x - targetDoor:pos().x
+	end
+
+	return 0
+end
+
 return PathfindToRoom
