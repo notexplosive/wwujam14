@@ -23,6 +23,7 @@ function Plan:executeCurrentAction()
 		local action = self.listOfActions[self.currentActionIndex]
 		if action then
 			self.pendingComponent = self.actor:addComponent(action.component, unpack(action.args))
+			debugLog(self.pendingComponent.name)
 		end
 	else
 		if self.pendingComponent:isFinished() then

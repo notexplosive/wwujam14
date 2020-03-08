@@ -91,12 +91,12 @@ local room4 = createRoom("Room4", Vector.new(300, 500), Size.new(500, 300), 250)
 
 createDoorPair(room1, 50, room2, 50)
 createDoorPair(room2, 200, room3, 50)
-createDoorPair(room2, 100, room4, 50)
+createDoorPair(room2, 100, room4, 20)
 
 local player = createPlayer(room1, 300)
 
 createItem(room1, 90, "plate")
-createItem(room2, 90, "fork")
+createItem(room2, 250, "fork")
 
 local gary = createNPC(room1, 300, "Gary")
 gary:addComponent(Components.PathfindToRoom, room3)
@@ -108,7 +108,11 @@ local johnPlan = john.Plan
 johnPlan:addAction(Components.PathfindToRoom, room1)
 johnPlan:addAction(Components.GetItemInRoom, "plate")
 johnPlan:addAction(Components.PathfindToRoom, room4)
---johnPlan:addAction(Components.DropItem)
+johnPlan:addAction(Components.DropItemInRoom)
+johnPlan:addAction(Components.PathfindToRoom, room2)
+johnPlan:addAction(Components.GetItemInRoom, "fork")
+johnPlan:addAction(Components.PathfindToRoom, room4)
+johnPlan:addAction(Components.DropItemInRoom)
 
 --[[
 	John is in room 2

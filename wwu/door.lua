@@ -1,6 +1,6 @@
 local Door = {}
 
-registerComponent(Door, "Door")
+registerComponent(Door, "Door", {"Floorable"})
 
 function Door:setup(destinationActor)
 	self.destinationActor = destinationActor
@@ -16,6 +16,10 @@ end
 
 function Door:getDestinationRoom()
 	return self.destinationActor.Floorable:getCurrentRoom()
+end
+
+function Door:getSourceRoom()
+	return self.actor.Floorable:getCurrentRoom()
 end
 
 return Door
