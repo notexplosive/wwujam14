@@ -4,6 +4,10 @@ registerComponent(Door, "Door")
 
 function Door:setup(destinationActor)
 	self.destinationActor = destinationActor
+
+	local tr = self.actor:addComponent(Components.TextRenderer, self.destinationActor.Floorable:getCurrentRoom().name)
+	tr.offset.x = -20
+	tr.offset.y = -30
 end
 
 function Door:getDestination()
@@ -11,7 +15,7 @@ function Door:getDestination()
 end
 
 function Door:getDestinationRoom()
-	return destinationActor.Floorable:getCurrentRoom()
+	return self.destinationActor.Floorable:getCurrentRoom()
 end
 
 return Door
