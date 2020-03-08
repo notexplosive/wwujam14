@@ -45,6 +45,12 @@ function BoundingBox:setHeight(height)
     self.size.height = height
 end
 
+function BoundingBox:setRect(rect)
+    self.offset = Vector.new()
+    self.actor:setPos(rect:xy())
+    self.size = Size.new(rect:wh())
+end
+
 function BoundingBox:getRect()
     return Rect.new(
         self.actor:pos().x - self.offset.x,

@@ -39,11 +39,11 @@ function createPlayer(room, x)
 	player:setPos(room:pos().x + x, room:pos().y)
 	player.name = "Player"
 	player:addComponent(Components.CanInteract)
+	player:addComponent(Components.CanTalkToNpcs)
 	player:addComponent(Components.CanHoldItems)
 	player:addComponent(Components.CanTraverseDoors)
 	player:addComponent(Components.CanDropItems)
 	player:addComponent(Components.PlayerInput)
-	player:addComponent(Components.CanTalkToNpcs)
 	player:addComponent(Components.Collider, 20)
 	player:addComponent(Components.Movement, player.PlayerInput)
 	player:addComponent(Components.CharacterSpriteRenderer, "person")
@@ -120,9 +120,11 @@ createDoorPair(room2, 100, room4, 20)
 
 local player = createPlayer(room1, 100)
 
-createItem(room1, 90, "plate")
+createItem(room1, 160, "plate")
 createItem(room2, 250, "fork")
 createItem(room2, 270, "spoon")
+
+local mary = createNPC(room1, 100, "Mary")
 
 local gary = createNPC(room1, 150, "Gary")
 gary.Plan:addAction(Components.GetItemInRoom, "spork")

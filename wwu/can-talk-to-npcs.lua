@@ -37,7 +37,7 @@ function CanTalkToNpcs:onInteract()
         local dialog = uiScene:addActor()
         dialog:addComponent(Components.BlockingUI, self.actor:scene())
         dialog:addComponent(Components.DeferredComponent, Components.DestroyOnKeys, "down", "space")
-        dialog:addComponent(Components.TextRenderer, npc.Plan:report())
+        dialog:addComponent(Components.TextBox, npc.Plan:report())
 
         return true
     end
