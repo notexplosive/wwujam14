@@ -12,8 +12,8 @@ function CanHoldItems:draw(x, y)
 	end
 end
 
-function CanHoldItems:getOverlappedItem()
-	local myBounds = self.actor.BoundingBox:getRect()
+function CanHoldItems:getOverlappedItem(givenBounds)
+	local myBounds = givenBounds or self.actor.BoundingBox:getRect()
 	for i, itemActor in self.actor:scene():eachActorWith(Components.Item) do
 		local itemBounds = itemActor.BoundingBox:getRect()
 		if myBounds:getIntersection(itemBounds):area() > 0 then

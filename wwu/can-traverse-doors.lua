@@ -2,12 +2,11 @@ local CanTraverseDoors = {}
 
 registerComponent(CanTraverseDoors, "CanTraverseDoors")
 
-function CanTraverseDoors:getCurrentDoor()
-	local myBounds = self.actor.BoundingBox:getRect()
+function CanTraverseDoors:getCurrentDoor(givenBounds)
+	local myBounds = givenBounds or self.actor.BoundingBox:getRect()
 	for i, actor in self.actor:scene():eachActorWith(Components.Door) do
 		local doorBounds = actor.BoundingBox:getRect()
-
-		if doorBounds:isVectorWithin(myBounds:center()) then
+		if myBounds:getIntersection(doorBounds):area() >= math.min(myBounds:area(), doorBounds:area()) then
 			return actor
 		end
 	end

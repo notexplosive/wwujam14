@@ -26,7 +26,6 @@ function createItem(room, x, itemName)
 	local item = scene:addActor()
 	item:setPos(room:pos().x + x, room:pos().y)
 	item:addComponent(Components.Collider, 20)
-	item:addComponent(Components.CircleRenderer, 5)
 	item:addComponent(Components.Item, itemName)
 	item:addComponent(Components.CharacterSpriteRenderer, "cake")
 	item.name = itemName
@@ -130,6 +129,7 @@ gary.Plan:addAction(Components.GetItemInRoom, "spork")
 gary.Plan:addAction(Components.PathfindToRoom, room4)
 
 local john = createNPC(room2, 300, "John")
+john.CharacterSpriteRenderer.color = {1, 0, 0}
 
 local johnPlan = john.Plan
 johnPlan:addAction(Components.PathfindToRoom, room1)
