@@ -46,4 +46,15 @@ function Room:getAdjacentRooms()
 	return result
 end
 
+function Room:getAllItems()
+	local result = {}
+	local allActorsInRoom = self:getAllActorsInRoom()
+	for i, item in ipairs(allActorsInRoom) do
+		if item.Item then
+			append(result, item)
+		end
+	end
+
+	return result
+end
 return Room

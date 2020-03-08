@@ -57,6 +57,8 @@ function createNPC(room, x, name, plan)
 	npc:addComponent(Components.NpcInput, plan)
 	npc:addComponent(Components.Collider, 20)
 	npc:addComponent(Components.Movement, npc.NpcInput)
+	npc:addComponent(Components.Inventory)
+
 	return npc
 end
 
@@ -98,5 +100,9 @@ createItem(room1, 90, "plate")
 local garyPlan = Plan.new()
 local gary = createNPC(room1, 300, "Gary", garyPlan)
 gary:addComponent(Components.PathfindToRoom, room3)
+
+local johnPlan = Plan.new()
+local john = createNPC(room2, 300, "John", johnPlan)
+john:addComponent(Components.GetItemInRoom, "plate")
 
 return scene
