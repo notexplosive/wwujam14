@@ -4,13 +4,8 @@ registerComponent(PathfindToRoom, "PathfindToRoom", {"Floorable"})
 
 function PathfindToRoom:setup(targetRoom)
 	self.targetRoom = targetRoom
+	self.path = {}
 	assert(self.targetRoom)
-end
-
-function PathfindToRoom:awake()
-end
-
-function PathfindToRoom:draw(x, y)
 end
 
 function PathfindToRoom:update(dt)
@@ -47,6 +42,12 @@ function PathfindToRoom:visit(currentRoom, visitedRooms, destination, path)
 			append(path, currentRoom)
 			return true
 		end
+	end
+end
+
+function PathfindToRoom:getNextRoom()
+	if #self.path > 1 then
+		return self.path[2]
 	end
 end
 

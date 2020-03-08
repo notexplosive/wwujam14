@@ -11,15 +11,7 @@ function PlayerInput:onKeyPress(button, scancode, wasRelease)
 		self.inputState[button] = not wasRelease
 	end
 	if button == "down" and not wasRelease then
-		local components = copyList(self.actor.components)
-		for i, component in ipairs(components) do
-			if component["onInteract"] and not components._isDestroyed then
-				local b = component["onInteract"](component)
-				if b then
-					break
-				end
-			end
-		end
+		self.actor.CanInteract:interact()
 	end
 end
 

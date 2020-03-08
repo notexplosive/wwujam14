@@ -25,6 +25,16 @@ function Room:getAllActorsInRoom()
 	return result
 end
 
+function Room:getAllDoors()
+	local result = {}
+	for i, actor in ipairs(self:getAllActorsInRoom()) do
+		if actor.Door then
+			append(result, actor)
+		end
+	end
+	return result
+end
+
 function Room:getAdjacentRooms()
 	local result = {}
 	local allActorsInRoom = self:getAllActorsInRoom()

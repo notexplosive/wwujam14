@@ -37,6 +37,7 @@ function createPlayer(room, x)
 	local player = scene:addActor()
 	player:setPos(room:pos().x + x, room:pos().y)
 	player.name = "Player"
+	player:addComponent(Components.CanInteract)
 	player:addComponent(Components.PlayerInput)
 	player:addComponent(Components.Collider, 20)
 	player:addComponent(Components.Movement, player.PlayerInput)
@@ -51,6 +52,8 @@ function createNPC(room, x, name, plan)
 	local npc = scene:addActor()
 	npc.name = name
 	npc:setPos(room:pos().x + x, room:pos().y)
+	npc:addComponent(Components.CanInteract)
+	npc:addComponent(Components.CanTraverseDoors)
 	npc:addComponent(Components.NpcInput, plan)
 	npc:addComponent(Components.Collider, 20)
 	npc:addComponent(Components.Movement, npc.NpcInput)
@@ -89,14 +92,11 @@ createDoorPair(room2, 200, room3, 50)
 createDoorPair(room2, 100, room4, 50)
 
 local player = createPlayer(room1, 300)
-player:addComponent(Components.PathfindToRoom, room3)
 
 createItem(room1, 90, "plate")
 
 local garyPlan = Plan.new()
 local gary = createNPC(room1, 300, "Gary", garyPlan)
-
-local johnPlan = Plan.new()
-local john = createNPC(room1, 100, "John", johnPlan)
+gary:addComponent(Components.PathfindToRoom, room3)
 
 return scene
