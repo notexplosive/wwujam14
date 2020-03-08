@@ -18,22 +18,22 @@ function createRoom(x, y, w, h, floorHeight)
 	return room
 end
 
-function createItem(room, x, y, itemName)
-	assert(room and x and y and itemName)
+function createItem(room, x, itemName)
+	assert(room and x and itemName)
 
 	local item = scene:addActor()
-	item:setPos(room:pos().x + x, y)
+	item:setPos(room:pos().x + x, room:pos().y)
 	item:addComponent(Components.Collider, 20)
 	item:addComponent(Components.CircleRenderer, 5)
 	item:addComponent(Components.Item, itemName)
 	return item
 end
 
-function createPlayer(room, x, y)
-	assert(room and x and y)
+function createPlayer(room, x)
+	assert(room and x)
 
 	local player = scene:addActor()
-	player:setPos(room:pos().x + x, y)
+	player:setPos(room:pos().x + x, room:pos().y)
 	player.name = "Player"
 	player:addComponent(Components.PlayerInput)
 	player:addComponent(Components.Collider, 20)
@@ -42,18 +42,18 @@ function createPlayer(room, x, y)
 	player:addComponent(Components.Inventory)
 end
 
-function createNPC(room, x, y, name, plan)
-	assert(room and x and y and name and plan)
+function createNPC(room, x, name, plan)
+	assert(room and x and name and plan)
 	local npc = scene:addActor()
 	npc.name = name
-	npc:setPos(room:pos().x + x, y)
+	npc:setPos(room:pos().x + x, room:pos().y)
 	npc:addComponent(Components.NpcInput, plan)
 	npc:addComponent(Components.Collider, 20)
 	npc:addComponent(Components.Movement, npc.NpcInput)
 	return npc
 end
 
-local room1 = createRoom(100, 0, 500, 300, 250)
+local room1 = createRoom(100, 200, 500, 300, 250)
 local room2 = createRoom(800, 50, 500, 300, 250)
 
 local door = scene:addActor()
@@ -67,15 +67,15 @@ door2:addComponent(Components.Collider, 40)
 door:addComponent(Components.Door, door2)
 door2:addComponent(Components.Door, door)
 
-local player = createPlayer(room1, 300, 200)
+local player = createPlayer(room1, 300)
 
-createItem(room1, 90, 200, "plate")
+createItem(room1, 90, "plate")
 
 local garyPlan = Plan.new()
-local gary = createNPC(room1, 300, 200, "Gary", garyPlan)
+local gary = createNPC(room1, 300, "Gary", garyPlan)
 
 local johnPlan = Plan.new()
-local john = createNPC(room1, 100, 200, "John", johnPlan)
+local john = createNPC(room1, 100, "John", johnPlan)
 
 garyPlan:appendTask(
 	Task.new(
