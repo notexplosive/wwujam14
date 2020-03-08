@@ -18,6 +18,8 @@ function TextBox:draw(x, y)
     local rect = self.actor.BoundingBox:getRect()
     love.graphics.setColor(0, 0, 1, 0.5)
     love.graphics.rectangle("fill", rect:xywh())
+    love.graphics.setColor(0, 0, 0, 0.5)
+    love.graphics.rectangle("line", rect:xywh())
 end
 
 function TextBox:update(dt)
