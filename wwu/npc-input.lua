@@ -12,9 +12,7 @@ end
 
 function NpcInput:update(dt)
 	if self.actor.PathfindToRoom then
-		if self.actor.PathfindToRoom.path then
-			self:calculateInputFromAction(self.actor.PathfindToRoom, dt)
-		end
+		self:calculateInputFromAction(self.actor.PathfindToRoom, dt)
 	end
 
 	if self.actor.GetItemInRoom then
@@ -22,6 +20,10 @@ function NpcInput:update(dt)
 	end
 end
 
+-- actions need:
+-- getDirection() -> signed integer, displacement between self and desired location
+-- isAble() -> boolean, true if the action could be completed this frame
+-- isFinished() -> boolean, true if the action is satisfied
 function NpcInput:calculateInputFromAction(actionComponent, dt)
 	local direction = actionComponent:getDirection()
 
