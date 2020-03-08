@@ -34,24 +34,25 @@ door2:addComponent(Components.Door, door)
 
 local player = scene:addActor()
 player:setPos(300, 200)
+player.name = "Player"
 player:addComponent(Components.PlayerInput)
 player:addComponent(Components.Collider, 20)
 player:addComponent(Components.Movement, player.PlayerInput)
 player:addComponent(Components.CanTraverseDoors)
 player:addComponent(Components.Inventory)
 
-function createItem(x, y)
-	assert(x and y)
+function createItem(x, y, itemName)
+	assert(x and y and itemName)
 
 	local item = scene:addActor()
 	item:setPos(x, y)
 	item:addComponent(Components.Collider, 20)
 	item:addComponent(Components.CircleRenderer, 5)
-	item:addComponent(Components.Item)
+	item:addComponent(Components.Item, itemName)
 	return item
 end
 
-createItem(400, 200)
+createItem(400, 200, "plate")
 
 function createNPC()
 end

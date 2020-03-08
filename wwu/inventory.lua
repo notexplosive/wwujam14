@@ -6,7 +6,10 @@ function Inventory:awake()
 	self.currentHeldItem = nil
 end
 
-function Inventory:update(dt)
+function Inventory:draw(x, y)
+	if self:isHolding() then
+		self.currentHeldItem:draw(x, y - 25)
+	end
 end
 
 function Inventory:getOverlappedItem()
@@ -41,6 +44,7 @@ function Inventory:isHolding()
 end
 
 function Inventory:pickUp(item)
+	debugLog(self.actor.name .. " picked up " .. item.Item.itemName)
 	self.currentHeldItem = item
 	self.currentHeldItem:removeFromScene()
 end
