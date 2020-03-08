@@ -50,6 +50,8 @@ function Inventory:pickUp(item)
 end
 
 function Inventory:dropItem()
+	debugLog(self.actor.name .. " dropped up " .. self.currentHeldItem.Item.itemName)
+
 	self.currentHeldItem:setPos(self.actor:pos())
 	self.actor:scene():addActor(self.currentHeldItem)
 	self.currentHeldItem = nil

@@ -1,6 +1,5 @@
 local Scene = require("nx/game/scene")
 local Task = require("data/task")
-local Plan = require("data/plan")
 local scene = Scene.new()
 
 local world = scene:addActor()
@@ -47,14 +46,14 @@ function createPlayer(room, x)
 	return player
 end
 
-function createNPC(room, x, name, plan)
-	assert(room and x and name and plan)
+function createNPC(room, x, name)
+	assert(room and x and name)
 	local npc = scene:addActor()
 	npc.name = name
 	npc:setPos(room:pos().x + x, room:pos().y)
 	npc:addComponent(Components.CanInteract)
 	npc:addComponent(Components.CanTraverseDoors)
-	npc:addComponent(Components.NpcInput, plan)
+	npc:addComponent(Components.NpcInput)
 	npc:addComponent(Components.Collider, 20)
 	npc:addComponent(Components.Movement, npc.NpcInput)
 	npc:addComponent(Components.Inventory)
@@ -98,12 +97,22 @@ local player = createPlayer(room1, 300)
 createItem(room1, 90, "plate")
 createItem(room2, 90, "fork")
 
-local garyPlan = Plan.new()
-local gary = createNPC(room1, 300, "Gary", garyPlan)
+local gary = createNPC(room1, 300, "Gary")
 gary:addComponent(Components.PathfindToRoom, room3)
 
-local johnPlan = Plan.new()
-local john = createNPC(room2, 300, "John", johnPlan)
-john:addComponent(Components.GetItemInRoom, "plate")
+local john = createNPC(room2, 300, "John")
+john:addComponent(Components.Plan)
 
+local johnPlan = john.Plan
+johnPlan:addAction(Components.PathfindToRoom, room1)
+johnPlan:addAction(Components.GetItemInRoom, "plate")
+johnPlan:addAction(Components.PathfindToRoom, room4)
+--johnPlan:addAction(Components.DropItem)
+
+--[[
+	John is in room 2
+	John goes to room 1
+	John picks up the plate
+	John puts the plate in room 4
+]]
 return scene

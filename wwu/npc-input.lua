@@ -2,8 +2,7 @@ local NpcInput = {}
 
 registerComponent(NpcInput, "NpcInput")
 
-function NpcInput:setup(plan)
-	self.plan = plan
+function NpcInput:setup()
 end
 
 function NpcInput:awake()
