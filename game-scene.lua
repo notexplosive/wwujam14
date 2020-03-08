@@ -6,17 +6,23 @@ local scene = Scene.new()
 local world = scene:addActor()
 world:addComponent(Components.Viewport, 1)
 
-local room = scene:addActor()
-room:setPos(100, 0)
-room:addComponent(Components.BoundingBox, 500, 300)
-room:addComponent(Components.BoundingBoxRenderer)
-room:addComponent(Components.Room, 250)
+local function createRoom(x, y, w, h, floorHeight)
+	assert(x)
+	assert(y)
+	assert(w)
+	assert(h)
 
-local room2 = scene:addActor()
-room2:setPos(800, 50)
-room2:addComponent(Components.BoundingBox, 500, 300)
-room2:addComponent(Components.BoundingBoxRenderer)
-room2:addComponent(Components.Room, 250)
+	local room = scene:addActor()
+	room:setPos(x, y)
+	room:addComponent(Components.BoundingBox, w, h)
+	room:addComponent(Components.BoundingBoxRenderer)
+	room:addComponent(Components.Room, floorHeight or 250)
+
+	return room
+end
+
+createRoom(100, 0, 500, 300, 250)
+createRoom(800, 50, 500, 300, 250)
 
 local door = scene:addActor()
 door:setPos(125, 200)
@@ -37,11 +43,19 @@ player:addComponent(Components.Movement, player.PlayerInput)
 player:addComponent(Components.CanTraverseDoors)
 player:addComponent(Components.Inventory)
 
-local item = scene:addActor()
-item:setPos(400, 200)
-item:addComponent(Components.Collider, 20)
-item:addComponent(Components.CircleRenderer, 5)
-item:addComponent(Components.Item)
+function createItem(x, y)
+	local item = scene:addActor()
+	item:setPos(x, y)
+	item:addComponent(Components.Collider, 20)
+	item:addComponent(Components.CircleRenderer, 5)
+	item:addComponent(Components.Item)
+	return item
+end
+
+createItem(400, 200)
+
+function createNPC()
+end
 
 local garyPlan = Plan.new()
 local gary = scene:addActor()
