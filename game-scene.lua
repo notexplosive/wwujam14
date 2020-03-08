@@ -16,7 +16,8 @@ function createRoom(name, pos, size, floorHeight)
 	room:addComponent(Components.BoundingBoxRenderer)
 	room:addComponent(Components.Room, floorHeight or 250)
 	room:addComponent(Components.TextRenderer, name)
-	--room:addComponent(Components.SpriteRenderer, "background-brick")
+	room:addComponent(Components.BackgroundRenderer, "background-brick")
+
 	return room
 end
 
@@ -39,9 +40,9 @@ function createPlayer(room, x)
 	player:setPos(room:pos().x + x, room:pos().y)
 	player.name = "Player"
 	player:addComponent(Components.CanInteract)
-	player:addComponent(Components.CanTalkToNpcs)
 	player:addComponent(Components.CanHoldItems)
 	player:addComponent(Components.CanTraverseDoors)
+	player:addComponent(Components.CanTalkToNpcs)
 	player:addComponent(Components.CanDropItems)
 	player:addComponent(Components.PlayerInput)
 	player:addComponent(Components.Collider, 20)
@@ -106,40 +107,40 @@ end
 --------------------------------------------
 --------------------------------------------
 
-local room1 = createRoom("Room1", Vector.new(100, 200), Size.new(300, 300), 250)
-local room2 = createRoom("Room2", Vector.new(800, 50), Size.new(1000, 300), 250)
-local room3 = createRoom("Room3", Vector.new(800, 500), Size.new(500, 300), 250)
-local room4 = createRoom("Room4", Vector.new(300, 500), Size.new(500, 300), 250)
-
-GLOBAL_ROOMS = {room1, room2, room3, room4}
+GLOBAL_ROOMS = {
+	createRoom("First Room", Vector.new(100, 200), Size.new(300, 300), 250),
+	createRoom("Room, The Second", Vector.new(800, 50), Size.new(1000, 300), 250),
+	createRoom("Bathroom", Vector.new(800, 500), Size.new(500, 300), 250),
+	createRoom("Room Room", Vector.new(300, 500), Size.new(500, 300), 250)
+}
 validateRooms(GLOBAL_ROOMS)
 
-createDoorPair(room1, 50, room2, 50)
-createDoorPair(room2, 200, room3, 50)
-createDoorPair(room2, 100, room4, 20)
+createDoorPair(GLOBAL_ROOMS[1], 50, GLOBAL_ROOMS[2], 50)
+createDoorPair(GLOBAL_ROOMS[2], 200, GLOBAL_ROOMS[3], 50)
+createDoorPair(GLOBAL_ROOMS[2], 100, GLOBAL_ROOMS[4], 20)
 
-local player = createPlayer(room1, 100)
+local player = createPlayer(GLOBAL_ROOMS[1], 100)
 
-createItem(room1, 160, "plate")
-createItem(room2, 250, "fork")
-createItem(room2, 270, "spoon")
+createItem(GLOBAL_ROOMS[1], 160, "plate")
+createItem(GLOBAL_ROOMS[2], 250, "fork")
+createItem(GLOBAL_ROOMS[2], 270, "spoon")
 
-local mary = createNPC(room1, 100, "Mary")
+local mary = createNPC(GLOBAL_ROOMS[1], 100, "Mary")
 
-local gary = createNPC(room1, 150, "Gary")
+local gary = createNPC(GLOBAL_ROOMS[1], 150, "Gary")
 gary.Plan:addAction(Components.GetItemInRoom, "spork")
-gary.Plan:addAction(Components.PathfindToRoom, room4)
+gary.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[4])
 
-local john = createNPC(room2, 300, "John")
+local john = createNPC(GLOBAL_ROOMS[2], 300, "John")
 
 local johnPlan = john.Plan
-johnPlan:addAction(Components.PathfindToRoom, room1)
+johnPlan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[1])
 johnPlan:addAction(Components.GetItemInRoom, "plate")
-johnPlan:addAction(Components.PathfindToRoom, room4)
+johnPlan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[4])
 johnPlan:addAction(Components.DropItemInRoom)
-johnPlan:addAction(Components.PathfindToRoom, room2)
+johnPlan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[2])
 johnPlan:addAction(Components.GetItemInRoom, "fork")
-johnPlan:addAction(Components.PathfindToRoom, room4)
+johnPlan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[4])
 johnPlan:addAction(Components.DropItemInRoom)
 
 --[[
