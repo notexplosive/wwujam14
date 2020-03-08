@@ -39,10 +39,11 @@ function createPlayer(room, x)
 	player.name = "Player"
 	player:addComponent(Components.CanInteract)
 	player:addComponent(Components.PlayerInput)
+	player:addComponent(Components.Inventory)
+	player:addComponent(Components.CanTalkToNpcs)
 	player:addComponent(Components.Collider, 20)
 	player:addComponent(Components.Movement, player.PlayerInput)
 	player:addComponent(Components.CanTraverseDoors)
-	player:addComponent(Components.Inventory)
 
 	return player
 end
