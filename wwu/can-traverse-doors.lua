@@ -17,10 +17,6 @@ end
 function CanTraverseDoors:onInteract()
 	local door = self:getCurrentDoor()
 	if door then
-		debugLog(
-			self.actor.name,
-			"went through a door " .. door.Door:getSourceRoom().name .. " -> " .. door.Door:getDestinationRoom().name
-		)
 		self.actor:setPos(door.Door:getDestination())
 		return true
 	end

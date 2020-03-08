@@ -47,6 +47,7 @@ function createPlayer(room, x)
 	player:addComponent(Components.Collider, 20)
 	player:addComponent(Components.Movement, player.PlayerInput)
 	player:addComponent(Components.CharacterSpriteRenderer, "person")
+	player:addComponent(Components.CameraIsOnMe)
 
 	return player
 end
@@ -93,9 +94,9 @@ end
 --------------------------------------------
 
 local room1 = createRoom("Room1", Vector.new(100, 200), Size.new(500, 300), 250)
-local room2 = createRoom("Room2", Vector.new(800, 50), Size.new(500, 300), 250)
+local room2 = createRoom("Room2", Vector.new(800, 50), Size.new(800, 300), 250)
 local room3 = createRoom("Room3", Vector.new(800, 500), Size.new(500, 300), 250)
-local room4 = createRoom("Room4", Vector.new(300, 500), Size.new(500, 300), 250)
+local room4 = createRoom("Room4", Vector.new(300, 500), Size.new(500, 900), 250)
 GLOBAL_ROOMS = {room1, room2, room3, room4}
 
 createDoorPair(room1, 50, room2, 50)

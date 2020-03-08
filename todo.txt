@@ -1,4 +1,5 @@
 assets
 camera
+background images
 file represenation of mansion
 file represenation of npc plan

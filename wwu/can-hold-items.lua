@@ -48,14 +48,11 @@ function CanHoldItems:getHeldItemName()
 end
 
 function CanHoldItems:pickUp(item)
-	debugLog(self.actor.name .. " picked up " .. item.Item.itemName)
 	self.currentHeldItem = item
 	self.currentHeldItem:removeFromScene()
 end
 
 function CanHoldItems:dropItem()
-	debugLog(self.actor.name .. " dropped up " .. self.currentHeldItem.Item.itemName)
-
 	self.currentHeldItem:setPos(self.actor:pos())
 	self.actor:scene():addActor(self.currentHeldItem)
 	self.currentHeldItem = nil
