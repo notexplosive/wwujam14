@@ -13,28 +13,24 @@ end
 function NpcInput:update(dt)
 	if self.actor.PathfindToRoom then
 		if self.actor.PathfindToRoom.path then
-			local direction = self.actor.PathfindToRoom:getDirection()
-
-			if self.actor.PathfindToRoom:isAble() and not self.actor.PathfindToRoom:isFinished() then
-				self:attemptInteract(dt)
-				direction = 0
-			end
-
-			self:applyDirection(direction)
+			self:calculateInputFromAction(self.actor.PathfindToRoom, dt)
 		end
 	end
 
 	if self.actor.GetItemInRoom then
-		local direction = self.actor.GetItemInRoom:getDirection()
-
-		-- TODO: replace math.abs etc with GetItemInRoom:isAble()
-		if self.actor.GetItemInRoom:isAble() and not self.actor.GetItemInRoom:isFinished() then
-			self:attemptInteract(dt)
-			direction = 0
-		end
-
-		self:applyDirection(direction)
+		self:calculateInputFromAction(self.actor.GetItemInRoom, dt)
 	end
+end
+
+function NpcInput:calculateInputFromAction(actionComponent, dt)
+	local direction = actionComponent:getDirection()
+
+	if actionComponent:isAble() and not actionComponent:isFinished() then
+		self:attemptInteract(dt)
+		direction = 0
+	end
+
+	self:applyDirection(direction)
 end
 
 function NpcInput:getInputState()

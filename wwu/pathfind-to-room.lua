@@ -88,7 +88,7 @@ end
 function PathfindToRoom:isAble()
 	local door = self.actor.CanTraverseDoors:getCurrentDoor()
 	local direction = self:getDirection()
-	return door == self:getTargetDoor() and math.abs(direction) < 1
+	return door == self:getTargetDoor() and math.abs(direction) < 5
 end
 
 return PathfindToRoom
