@@ -7,10 +7,7 @@ local world = scene:addActor()
 world:addComponent(Components.Viewport, 1)
 
 local function createRoom(x, y, w, h, floorHeight)
-	assert(x)
-	assert(y)
-	assert(w)
-	assert(h)
+	assert(x and y and w and h)
 
 	local room = scene:addActor()
 	room:setPos(x, y)
@@ -44,6 +41,8 @@ player:addComponent(Components.CanTraverseDoors)
 player:addComponent(Components.Inventory)
 
 function createItem(x, y)
+	assert(x and y)
+
 	local item = scene:addActor()
 	item:setPos(x, y)
 	item:addComponent(Components.Collider, 20)
