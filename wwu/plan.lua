@@ -12,7 +12,6 @@ end
 
 function Plan:update(dt)
 	self:executeCurrentAction()
-	debugLog(self:report())
 end
 
 function Plan:addAction(component, ...)

@@ -61,9 +61,9 @@ function Viewport:sceneDraw()
     love.graphics.pop()
 
     if DEBUG then
-        love.graphics.setColor(1, 1, 0, 1, 1)
-        love.graphics.setFont(font)
-        love.graphics.print("viewport scale: " .. self.scale .. "\npress q to disconnect viewport", 7, 5)
+    --love.graphics.setColor(1, 1, 0, 1, 1)
+    --love.graphics.setFont(font)
+    --love.graphics.print("viewport scale: " .. self.scale .. "\npress q to disconnect viewport", 7, 5)
     end
 end
 
