@@ -1,8 +1,8 @@
-local CharacterSpriteRenderer = {}
+local ImageRenderer = {}
 
-registerComponent(CharacterSpriteRenderer, "CharacterSpriteRenderer")
+registerComponent(ImageRenderer, "ImageRenderer")
 
-function CharacterSpriteRenderer:setup(imageName)
+function ImageRenderer:setup(imageName)
     assert(Assets.images[imageName], imageName)
     self.image = Assets.images[imageName].image
     assert(self.image)
@@ -10,11 +10,11 @@ function CharacterSpriteRenderer:setup(imageName)
     self.color = {1, 1, 1, 1}
 end
 
-function CharacterSpriteRenderer:awake()
+function ImageRenderer:awake()
     self.flip = false
 end
 
-function CharacterSpriteRenderer:draw(x, y)
+function ImageRenderer:draw(x, y)
     local scale = 0.25
     love.graphics.setColor(self.color)
     love.graphics.draw(
@@ -27,7 +27,7 @@ function CharacterSpriteRenderer:draw(x, y)
     )
 end
 
-function CharacterSpriteRenderer:update(dt)
+function ImageRenderer:update(dt)
     if self.actor.Movement then
         local dx = self.actor.Movement.velocity.x
         if dx > 0 then
@@ -39,7 +39,7 @@ function CharacterSpriteRenderer:update(dt)
     end
 end
 
-function CharacterSpriteRenderer:getNumberFromFlip()
+function ImageRenderer:getNumberFromFlip()
     if self.flip then
         return -1
     else
@@ -47,4 +47,4 @@ function CharacterSpriteRenderer:getNumberFromFlip()
     end
 end
 
-return CharacterSpriteRenderer
+return ImageRenderer

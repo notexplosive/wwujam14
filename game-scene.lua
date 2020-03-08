@@ -27,7 +27,7 @@ function createItem(room, x, itemName)
 	item:setPos(room:pos().x + x, room:pos().y)
 	item:addComponent(Components.Collider, 20)
 	item:addComponent(Components.Item, itemName)
-	item:addComponent(Components.CharacterSpriteRenderer, "cake")
+	item:addComponent(Components.ImageRenderer, "cake")
 	item.name = itemName
 	return item
 end
@@ -46,7 +46,7 @@ function createPlayer(room, x)
 	player:addComponent(Components.PlayerInput)
 	player:addComponent(Components.Collider, 20)
 	player:addComponent(Components.Movement, player.PlayerInput)
-	player:addComponent(Components.CharacterSpriteRenderer, "person")
+	player:addComponent(Components.ImageRenderer, "person")
 	player:addComponent(Components.CameraIsOnMe)
 
 	return player
@@ -65,7 +65,7 @@ function createNPC(room, x, name)
 	npc:addComponent(Components.Collider, 20)
 	npc:addComponent(Components.Movement, npc.NpcInput)
 	npc:addComponent(Components.Plan)
-	npc:addComponent(Components.CharacterSpriteRenderer, "person")
+	npc:addComponent(Components.ImageRenderer, "person")
 
 	return npc
 end
@@ -75,12 +75,12 @@ function createDoorPair(room1, room1X, room2, room2X)
 	local door1 = scene:addActor()
 	door1:setPos(room1:pos().x + room1X, room1:pos().y)
 	door1:addComponent(Components.Collider, doorWidth)
-	--door1:addComponent(Components.CharacterSpriteRenderer, "door")
+	--door1:addComponent(Components.ImageRenderer, "door")
 
 	local door2 = scene:addActor()
 	door2:setPos(room2:pos().x + room2X, room2:pos().y)
 	door2:addComponent(Components.Collider, doorWidth)
-	--door2:addComponent(Components.CharacterSpriteRenderer, "door")
+	--door2:addComponent(Components.ImageRenderer, "door")
 
 	door1:addComponent(Components.Door, door2)
 	door2:addComponent(Components.Door, door1)
@@ -131,7 +131,7 @@ gary.Plan:addAction(Components.GetItemInRoom, "spork")
 gary.Plan:addAction(Components.PathfindToRoom, room4)
 
 local john = createNPC(room2, 300, "John")
-john.CharacterSpriteRenderer.color = {1, 0, 0}
+john.ImageRenderer.color = {1, 0, 0}
 
 local johnPlan = john.Plan
 johnPlan:addAction(Components.PathfindToRoom, room1)

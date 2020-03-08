@@ -32,5 +32,6 @@
   "platform": ["platform.png", 85, 85],
   "background-brick": ["Background Brick.png"],
   "person": ["Person.png"],
-  "cake": ["Cake.png"]
+  "cake": ["Cake.png"],
+  "adrian": ["Adrian.png"]
 }
