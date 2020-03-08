@@ -22,9 +22,9 @@ function CameraIsOnMe:update(dt)
         local roomHeight = currentRoomActor.BoundingBox:height()
         local foo = (self.cameraActor.BoundingBox:height() - roomHeight) / 2
         local pos = currentRoomActor:pos()
-        if foo > 0 then
-            pos.y = pos.y - foo
-        end
+        --if foo > 0 then
+        pos.y = pos.y - foo
+        --end
         self.cameraActor:setPos(pos)
     end
 end

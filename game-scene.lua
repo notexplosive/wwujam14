@@ -88,28 +88,42 @@ function createDoorPair(room1, room1X, room2, room2X)
 	door2.name = room2.name .. " Door"
 end
 
+function validateRooms(roomList)
+	for i, roomActor1 in ipairs(roomList) do
+		local r1 = roomActor1.BoundingBox:getRect()
+		for j, roomActor2 in ipairs(roomList) do
+			if i ~= j then
+				local r2 = roomActor2.BoundingBox:getRect()
+				assert(r1:getIntersection(r2):area() == 0, roomActor1.name .. " overlaps with " .. roomActor2.name)
+			end
+		end
+	end
+end
+
 --------------------------------------------
 --------------------------------------------
 --------------------------------------------
 --------------------------------------------
 
-local room1 = createRoom("Room1", Vector.new(100, 200), Size.new(500, 300), 250)
-local room2 = createRoom("Room2", Vector.new(800, 50), Size.new(800, 300), 250)
+local room1 = createRoom("Room1", Vector.new(100, 200), Size.new(300, 300), 250)
+local room2 = createRoom("Room2", Vector.new(800, 50), Size.new(1000, 300), 250)
 local room3 = createRoom("Room3", Vector.new(800, 500), Size.new(500, 300), 250)
-local room4 = createRoom("Room4", Vector.new(300, 500), Size.new(500, 900), 250)
+local room4 = createRoom("Room4", Vector.new(300, 500), Size.new(500, 300), 250)
+
 GLOBAL_ROOMS = {room1, room2, room3, room4}
+validateRooms(GLOBAL_ROOMS)
 
 createDoorPair(room1, 50, room2, 50)
 createDoorPair(room2, 200, room3, 50)
 createDoorPair(room2, 100, room4, 20)
 
-local player = createPlayer(room1, 300)
+local player = createPlayer(room1, 100)
 
 createItem(room1, 90, "plate")
 createItem(room2, 250, "fork")
 createItem(room2, 270, "spoon")
 
-local gary = createNPC(room1, 300, "Gary")
+local gary = createNPC(room1, 150, "Gary")
 gary.Plan:addAction(Components.GetItemInRoom, "spork")
 gary.Plan:addAction(Components.PathfindToRoom, room4)
 
