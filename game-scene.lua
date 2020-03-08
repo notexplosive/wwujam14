@@ -96,6 +96,7 @@ createDoorPair(room2, 100, room4, 50)
 local player = createPlayer(room1, 300)
 
 createItem(room1, 90, "plate")
+createItem(room2, 90, "fork")
 
 local garyPlan = Plan.new()
 local gary = createNPC(room1, 300, "Gary", garyPlan)

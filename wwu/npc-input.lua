@@ -13,13 +13,12 @@ end
 function NpcInput:update(dt)
 	-- the following is bad code :(
 	if self.actor.PathfindToRoom then
-		local path = self.actor.PathfindToRoom.path
-		if path then
-			local dx = self.actor.PathfindToRoom:getDirection()
-			self.inputState.left = dx > 0
-			self.inputState.right = dx < 0
+		if self.actor.PathfindToRoom.path then
+			local direction = self.actor.PathfindToRoom:getDirection()
+			self.inputState.left = direction > 0
+			self.inputState.right = direction < 0
 
-			if math.abs(dx) < 5 and not self.actor.PathfindToRoom:isInTargetRoom() then
+			if math.abs(direction) < 5 and not self.actor.PathfindToRoom:isFinished() then
 				self.actor.CanInteract:interact()
 			end
 		end
@@ -30,7 +29,7 @@ function NpcInput:update(dt)
 		self.inputState.left = direction > 0
 		self.inputState.right = direction < 0
 
-		if math.abs(direction) < 5 and not self.actor.Inventory:isHolding() then
+		if math.abs(direction) < 5 and not self.actor.GetItemInRoom:isFinished() then
 			self.actor.CanInteract:interact()
 		end
 	end

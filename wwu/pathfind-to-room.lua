@@ -76,4 +76,8 @@ function PathfindToRoom:getDirection()
 	return 0
 end
 
+function PathfindToRoom:isFinished()
+	return self.actor.PathfindToRoom:isInTargetRoom()
+end
+
 return PathfindToRoom

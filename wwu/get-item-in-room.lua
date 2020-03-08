@@ -27,4 +27,8 @@ function GetItemInRoom:findItemInRoom()
 	return nil
 end
 
+function GetItemInRoom:isFinished()
+	return self.actor.Inventory:isHolding()
+end
+
 return GetItemInRoom
