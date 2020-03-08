@@ -11,7 +11,7 @@ function Door:getDestination()
 end
 
 function Door:getDestinationRoom()
-	return destinationActor.Collider:getCurrentRoom()
+	return destinationActor.Floorable:getCurrentRoom()
 end
 
 return Door

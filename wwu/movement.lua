@@ -22,19 +22,21 @@ function Movement:update(dt)
 
 	inputVector = inputVector:normalized() * self.moveSpeed * dt
 
-	local room = self.actor.Collider:getCurrentRoom()
+	local room = self.actor.Floorable:getCurrentRoom()
 	local rect = self.actor.BoundingBox:getRect()
-	rect:move(inputVector)
+	if room then
+		rect:move(inputVector)
 
-	if rect:left() < room:pos().x then
-		inputVector = Vector.new()
+		if rect:left() < room:pos().x then
+			inputVector = Vector.new()
+		end
+
+		if rect:right() > room:pos().x + room.BoundingBox:width() then
+			inputVector = Vector.new()
+		end
+
+		self.actor:move(inputVector)
 	end
-
-	if rect:right() > room:pos().x + room.BoundingBox:width() then
-		inputVector = Vector.new()
-	end
-
-	self.actor:move(inputVector)
 end
 
 return Movement
