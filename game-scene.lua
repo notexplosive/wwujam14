@@ -90,6 +90,7 @@ local room1 = createRoom("Room1", Vector.new(100, 200), Size.new(500, 300), 250)
 local room2 = createRoom("Room2", Vector.new(800, 50), Size.new(500, 300), 250)
 local room3 = createRoom("Room3", Vector.new(800, 500), Size.new(500, 300), 250)
 local room4 = createRoom("Room4", Vector.new(300, 500), Size.new(500, 300), 250)
+GLOBAL_ROOMS = {room1, room2, room3, room4}
 
 createDoorPair(room1, 50, room2, 50)
 createDoorPair(room2, 200, room3, 50)
@@ -99,6 +100,7 @@ local player = createPlayer(room1, 300)
 
 createItem(room1, 90, "plate")
 createItem(room2, 250, "fork")
+createItem(room2, 270, "spoon")
 
 local gary = createNPC(room1, 300, "Gary")
 gary.Plan:addAction(Components.GetItemInRoom, "spoon")

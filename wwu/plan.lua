@@ -31,7 +31,15 @@ function Plan:executeCurrentAction()
 	end
 end
 
+function Plan:getRealPendingComponent()
+	return self.pendingComponent
+end
+
 function Plan:getPendingComponent()
+	if self.actor.Seek then
+		return self.actor.Seek:getPendingComponent()
+	end
+
 	return self.pendingComponent
 end
 

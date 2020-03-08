@@ -7,8 +7,7 @@ function GetItemInRoom:setup(itemName)
 end
 
 function GetItemInRoom:update(dt)
-	local item = self:findItemInRoom()
-	if not item and not self.actor.Seek and not self.actor.CanHoldItems:isHolding() then
+	if not self:isPossible() and not self.actor.Seek and not self.actor.CanHoldItems:isHolding() then
 		self.actor:addComponent(Components.Seek)
 	end
 end
@@ -21,6 +20,10 @@ function GetItemInRoom:getDirection()
 	end
 
 	return 0
+end
+
+function GetItemInRoom:isPossible()
+	return self:findItemInRoom() ~= nil
 end
 
 function GetItemInRoom:findItemInRoom()
