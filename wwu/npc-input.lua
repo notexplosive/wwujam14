@@ -23,10 +23,6 @@ function NpcInput:update(dt)
 	self.inputState.right = direction.x > 0
 
 	self.inputState.left = direction.x < 0
-
-	self.inputState.down = direction.y > 0
-
-	self.inputState.up = direction.y < 0
 end
 
 function NpcInput:getInputState()

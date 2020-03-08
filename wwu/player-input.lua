@@ -7,7 +7,7 @@ function PlayerInput:awake()
 end
 
 function PlayerInput:onKeyPress(button, scancode, wasReleased)
-	if button == "up" or button == "down" or button == "left" or button == "right" then
+	if button == "left" or button == "right" then
 		self.inputState[button] = not wasReleased
 	end
 end
