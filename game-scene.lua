@@ -46,7 +46,7 @@ function createPlayer(room, x)
 	player:addComponent(Components.PlayerInput)
 	player:addComponent(Components.Collider, 20)
 	player:addComponent(Components.Movement, player.PlayerInput)
-	player:addComponent(Components.ImageRenderer, "person")
+	player:addComponent(Components.MovementSpriteRenderer, "adrian")
 	player:addComponent(Components.CameraIsOnMe)
 
 	return player
@@ -65,7 +65,7 @@ function createNPC(room, x, name)
 	npc:addComponent(Components.Collider, 20)
 	npc:addComponent(Components.Movement, npc.NpcInput)
 	npc:addComponent(Components.Plan)
-	npc:addComponent(Components.ImageRenderer, "person")
+	npc:addComponent(Components.MovementSpriteRenderer, "adrian")
 
 	return npc
 end
@@ -131,7 +131,6 @@ gary.Plan:addAction(Components.GetItemInRoom, "spork")
 gary.Plan:addAction(Components.PathfindToRoom, room4)
 
 local john = createNPC(room2, 300, "John")
-john.ImageRenderer.color = {1, 0, 0}
 
 local johnPlan = john.Plan
 johnPlan:addAction(Components.PathfindToRoom, room1)

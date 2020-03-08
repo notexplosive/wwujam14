@@ -139,6 +139,10 @@ function SpriteRenderer:pause()
     self.actor.PlayHead:pause()
 end
 
+function SpriteRenderer:play()
+    self.actor.PlayHead:play()
+end
+
 function SpriteRenderer:isPlaying()
     return self.actor.PlayHead:playing()
 end
