@@ -150,33 +150,37 @@ createDoorPair(GLOBAL_ROOMS[13], 700, GLOBAL_ROOMS[17], 50)
 createDoorPair(GLOBAL_ROOMS[14], 375, GLOBAL_ROOMS[18], 50)
 
 local player = createPlayer(GLOBAL_ROOMS[1], 100)
+--[[
+	1 foyer 	2 hallway up1 	3 library	4 balcony	5 hallway up2	6 bathroom	7 dining room
+	8 Courtyard 	9 Kitchen	10 living room 	11 hallway down2	12 rec room	13 hallway down 3	14 hallway down 1
+]]
 --item name, item image
-createItem(GLOBAL_ROOMS[10], 160, "candle")
-createItem(GLOBAL_ROOMS[7], 160, "candle")
-createItem(GLOBAL_ROOMS[3], 160, "candle")
-createItem(GLOBAL_ROOMS[3], 160, "candle")
-createItem(GLOBAL_ROOMS[8], 160, "candle")
-createItem(GLOBAL_ROOMS[8], 160, "candle")
-createItem(GLOBAL_ROOMS[11], 160, "candle")
-createItem(GLOBAL_ROOMS[12], 160, "holly", "holly")
-createItem(GLOBAL_ROOMS[9], 160, "holly", "holly")
+createItem(GLOBAL_ROOMS[10], 350, "candle")
+createItem(GLOBAL_ROOMS[7], 215, "candle")
+createItem(GLOBAL_ROOMS[3], 370, "candle")
+createItem(GLOBAL_ROOMS[3], 130, "candle")
+createItem(GLOBAL_ROOMS[8], 430, "candle")
+createItem(GLOBAL_ROOMS[8], 150, "candle")
+createItem(GLOBAL_ROOMS[11], 245, "candle")
+createItem(GLOBAL_ROOMS[12], 460, "holly", "holly")
+createItem(GLOBAL_ROOMS[9], 370, "holly", "holly")
 createItem(GLOBAL_ROOMS[4], 160, "holly", "holly")
-createItem(GLOBAL_ROOMS[3], 160, "knife", "knife")
+createItem(GLOBAL_ROOMS[3], 250, "knife", "knife")
 --sword
-createItem(GLOBAL_ROOMS[9], 160, "knife", "knife")
-createItem(GLOBAL_ROOMS[9], 160, "knife", "knife")
-createItem(GLOBAL_ROOMS[13], 160, "chalk", "book")
-createItem(GLOBAL_ROOMS[12], 160, "chalk", "book")
-createItem(GLOBAL_ROOMS[9], 160, "organs", "cake")
-createItem(GLOBAL_ROOMS[8], 160, "bunny", "card")
+createItem(GLOBAL_ROOMS[9], 220, "knife", "knife")
+createItem(GLOBAL_ROOMS[9], 150, "knife", "knife")
+createItem(GLOBAL_ROOMS[13], 540, "chalk", "book")
+createItem(GLOBAL_ROOMS[12], 560, "chalk", "book")
+createItem(GLOBAL_ROOMS[9], 310, "organs", "cake")
+createItem(GLOBAL_ROOMS[8], 465, "bunny", "card")
 
 --createItem(GLOBAL_ROOMS[1], 160, "spork", "cake")
 
 createItem(GLOBAL_ROOMS[4], 160, "plant", "holly")
-createItem(GLOBAL_ROOMS[10], 160, "plant", "holly")
-createItem(GLOBAL_ROOMS[8], 160, "plant", "holly")
-createItem(GLOBAL_ROOMS[8], 160, "plant", "holly")
-createItem(GLOBAL_ROOMS[12], 160, "plant", "holly")
+createItem(GLOBAL_ROOMS[10], 150, "plant", "holly")
+createItem(GLOBAL_ROOMS[8], 350, "plant", "holly")
+createItem(GLOBAL_ROOMS[8], 210, "plant", "holly")
+createItem(GLOBAL_ROOMS[12], 150, "plant", "holly")
 
 --[[
 createItem(GLOBAL_ROOMS[1], 160, "plate", "cake")
