@@ -31,7 +31,7 @@ function GetItemInRoom:isFinished()
 	return self.actor.Inventory:isHolding()
 end
 
-function GetItemInRoom:isAble()
+function GetItemInRoom:isReadyToInteract()
 	local item = self.actor.Inventory:getOverlappedItem()
 	return item and item.Item.itemName == self.targetItemName
 end

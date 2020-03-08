@@ -21,7 +21,7 @@ function DropItemInRoom:getDirection()
     return 0
 end
 
-function DropItemInRoom:isAble()
+function DropItemInRoom:isReadyToInteract()
     return self.actor.Inventory:isHolding() and not self:isOverlappingDoor()
 end
 

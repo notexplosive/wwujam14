@@ -85,7 +85,7 @@ function PathfindToRoom:isFinished()
 	return self.actor.PathfindToRoom:isInTargetRoom()
 end
 
-function PathfindToRoom:isAble()
+function PathfindToRoom:isReadyToInteract()
 	local door = self.actor.CanTraverseDoors:getCurrentDoor()
 	local direction = self:getDirection()
 	return door == self:getTargetDoor() and math.abs(direction) < 5
