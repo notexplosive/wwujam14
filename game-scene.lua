@@ -35,6 +35,7 @@ player:addComponent(Components.PlayerInput)
 player:addComponent(Components.Collider, 20)
 player:addComponent(Components.Movement, player.PlayerInput)
 player:addComponent(Components.CanTraverseDoors)
+player:addComponent(Components.Inventory)
 
 local item = scene:addActor()
 item:setPos(400, 200)
