@@ -18,20 +18,22 @@ function createRoom(x, y, w, h, floorHeight)
 	return room
 end
 
-function createItem(x, y, itemName)
-	assert(x and y and itemName)
+function createItem(room, x, y, itemName)
+	assert(room and x and y and itemName)
 
 	local item = scene:addActor()
-	item:setPos(x, y)
+	item:setPos(room:pos().x + x, y)
 	item:addComponent(Components.Collider, 20)
 	item:addComponent(Components.CircleRenderer, 5)
 	item:addComponent(Components.Item, itemName)
 	return item
 end
 
-function createPlayer(x, y)
+function createPlayer(room, x, y)
+	assert(room and x and y)
+
 	local player = scene:addActor()
-	player:setPos(x, y)
+	player:setPos(room:pos().x + x, y)
 	player.name = "Player"
 	player:addComponent(Components.PlayerInput)
 	player:addComponent(Components.Collider, 20)
@@ -40,11 +42,11 @@ function createPlayer(x, y)
 	player:addComponent(Components.Inventory)
 end
 
-function createNPC(x, y, name, plan)
-	assert(x and y and name and plan)
+function createNPC(room, x, y, name, plan)
+	assert(room and x and y and name and plan)
 	local npc = scene:addActor()
 	npc.name = name
-	npc:setPos(x, y)
+	npc:setPos(room:pos().x + x, y)
 	npc:addComponent(Components.NpcInput, plan)
 	npc:addComponent(Components.Collider, 20)
 	npc:addComponent(Components.Movement, npc.NpcInput)
@@ -65,15 +67,15 @@ door2:addComponent(Components.Collider, 40)
 door:addComponent(Components.Door, door2)
 door2:addComponent(Components.Door, door)
 
-local player = createPlayer(300, 200)
+local player = createPlayer(room1, 300, 200)
 
-createItem(400, 200, "plate")
+createItem(room1, 90, 200, "plate")
 
 local garyPlan = Plan.new()
-local gary = createNPC(500, 200, "Gary", garyPlan)
+local gary = createNPC(room1, 300, 200, "Gary", garyPlan)
 
 local johnPlan = Plan.new()
-local john = createNPC(250, 200, "John", johnPlan)
+local john = createNPC(room1, 100, 200, "John", johnPlan)
 
 garyPlan:appendTask(
 	Task.new(
