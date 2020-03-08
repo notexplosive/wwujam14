@@ -6,6 +6,13 @@ function GetItemInRoom:setup(itemName)
 	self.targetItemName = itemName
 end
 
+function GetItemInRoom:update(dt)
+	local item = self:findItemInRoom()
+	if not item and not self.actor.Seek and not self.actor.CanHoldItems:isHolding() then
+		self.actor:addComponent(Components.Seek)
+	end
+end
+
 function GetItemInRoom:getDirection()
 	local item = self:findItemInRoom()
 	if item then
@@ -37,7 +44,11 @@ function GetItemInRoom:isReadyToInteract()
 end
 
 function GetItemInRoom:talkToResponse()
-	return "is grabbing a " .. self.targetItemName
+	if self:findItemInRoom() then
+		return "is grabbing a " .. self.targetItemName
+	else
+		return "is looking for a " .. self.targetItemName
+	end
 end
 
 return GetItemInRoom

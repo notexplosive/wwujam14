@@ -10,6 +10,7 @@ function PathfindToRoom:setup(targetRoom)
 end
 
 function PathfindToRoom:update(dt)
+	assert(self.targetRoom)
 	self:calculatePath()
 end
 
