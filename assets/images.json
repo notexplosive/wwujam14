@@ -32,7 +32,6 @@
   "platform": ["platform.png", 85, 85],
   "person": ["Person.png"],
   "door": ["Door.png"],
-  // //
   "background-brick": ["Background Brick.png"],
   "cake": ["Cake.png"],
   "adrian": ["Adrian.png", 337, 739],
