@@ -7,9 +7,12 @@ function Movement:setup(inputComponent)
 
 	self.velocity = Vector.new()
 	self.moveSpeed = 300 -- per second
+
+	self.hitWallThisFrame = false
 end
 
 function Movement:update(dt)
+	self.hitWallThisFrame = false
 	local inputState = self.inputComponent:getInputState()
 	local inputVector = Vector.new()
 
@@ -29,14 +32,20 @@ function Movement:update(dt)
 
 		if rect:left() < room:pos().x then
 			inputVector = Vector.new()
+			self.hitWallThisFrame = true
 		end
 
 		if rect:right() > room:pos().x + room.BoundingBox:width() then
 			inputVector = Vector.new()
+			self.hitWallThisFrame = true
 		end
 
 		self.actor:move(inputVector)
 	end
+end
+
+function Movement:wasWallHitThisFrame()
+	return self.hitWallThisFrame
 end
 
 return Movement
