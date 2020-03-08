@@ -1,6 +1,4 @@
 assets
-text boxes
-background images
 sprite animation
 file represenation of mansion
 file represenation of npc plan

@@ -21,14 +21,14 @@ function createRoom(name, pos, size, floorHeight)
 	return room
 end
 
-function createItem(room, x, itemName)
+function createItem(room, x, itemName, imageNameIfDifferent)
 	assert(room and x and itemName)
 
 	local item = scene:addActor()
 	item:setPos(room:pos().x + x, room:pos().y)
 	item:addComponent(Components.Collider, 20)
 	item:addComponent(Components.Item, itemName)
-	item:addComponent(Components.ImageRenderer, "cake")
+	item:addComponent(Components.ImageRenderer, imageNameIfDifferent or itemName)
 	item.name = itemName
 	return item
 end
@@ -53,7 +53,7 @@ function createPlayer(room, x)
 	return player
 end
 
-function createNPC(room, x, name)
+function createNPC(room, x, name, spriteName)
 	assert(room and x and name)
 	local npc = scene:addActor()
 	npc.name = name
@@ -66,7 +66,7 @@ function createNPC(room, x, name)
 	npc:addComponent(Components.Collider, 20)
 	npc:addComponent(Components.Movement, npc.NpcInput)
 	npc:addComponent(Components.Plan)
-	npc:addComponent(Components.MovementSpriteRenderer, "adrian")
+	npc:addComponent(Components.MovementSpriteRenderer, spriteName or "adrian")
 
 	return npc
 end
@@ -151,11 +151,11 @@ createDoorPair(GLOBAL_ROOMS[13], 700, GLOBAL_ROOMS[17], 50)
 createDoorPair(GLOBAL_ROOMS[14], 375, GLOBAL_ROOMS[18], 50)
 
 local player = createPlayer(GLOBAL_ROOMS[1], 100)
---[[
-createItem(GLOBAL_ROOMS[1], 160, "plate")
-createItem(GLOBAL_ROOMS[2], 250, "fork")
-createItem(GLOBAL_ROOMS[2], 350, "spoon")
-]]
+
+createItem(GLOBAL_ROOMS[1], 160, "plate", "cake")
+createItem(GLOBAL_ROOMS[2], 250, "fork", "cake")
+createItem(GLOBAL_ROOMS[2], 350, "spoon", "cake")
+
 --[[
 local mary = createNPC(GLOBAL_ROOMS[1], 100, "Mary")
 ]]
@@ -174,11 +174,5 @@ johnPlan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[2])
 johnPlan:addAction(Components.GetItemInRoom, "fork")
 johnPlan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[4])
 johnPlan:addAction(Components.DropItemInRoom)
-]]
---[[
-	John is in room 2
-	John goes to room 1
-	John picks up the plate
-	John puts the plate in room 4
 ]]
 return scene
