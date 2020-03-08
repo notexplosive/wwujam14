@@ -4,11 +4,9 @@ registerComponent(Movement, "Movement")
 
 function Movement:setup(inputComponent)
 	self.inputComponent = inputComponent
-
-	self.velocity = Vector.new()
 	self.moveSpeed = inputComponent:getSpeed()
-
 	self.hitWallThisFrame = false
+	self.velocity = Vector.new()
 end
 
 function Movement:update(dt)
@@ -42,6 +40,7 @@ function Movement:update(dt)
 
 		self.actor:move(inputVector)
 	end
+	self.velocity = inputVector
 end
 
 function Movement:wasWallHitThisFrame()
