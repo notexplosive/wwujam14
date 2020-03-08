@@ -7,35 +7,51 @@ end
 
 function NpcInput:awake()
 	self.inputState = {left = false, right = false}
+	self.interactTimer = 0
 end
 
 function NpcInput:update(dt)
-	-- the following is bad code :(
 	if self.actor.PathfindToRoom then
 		if self.actor.PathfindToRoom.path then
 			local direction = self.actor.PathfindToRoom:getDirection()
-			self.inputState.left = direction > 0
-			self.inputState.right = direction < 0
 
 			if math.abs(direction) < 5 and not self.actor.PathfindToRoom:isFinished() then
-				self.actor.CanInteract:interact()
+				self:attemptInteract(dt)
+				direction = 0
 			end
+
+			self:applyDirection(direction)
 		end
 	end
 
 	if self.actor.GetItemInRoom then
 		local direction = self.actor.GetItemInRoom:getDirection()
-		self.inputState.left = direction > 0
-		self.inputState.right = direction < 0
 
-		if math.abs(direction) < 5 and not self.actor.GetItemInRoom:isFinished() then
-			self.actor.CanInteract:interact()
+		-- TODO: replace math.abs etc with GetItemInRoom:isAble()
+		if self.actor.GetItemInRoom:isAble() and not self.actor.GetItemInRoom:isFinished() then
+			self:attemptInteract(dt)
+			direction = 0
 		end
+
+		self:applyDirection(direction)
 	end
 end
 
 function NpcInput:getInputState()
 	return self.inputState
+end
+
+function NpcInput:attemptInteract(dt)
+	self.interactTimer = self.interactTimer + dt
+	if self.interactTimer > 0.25 then
+		self.actor.CanInteract:interact()
+		self.interactTimer = 0
+	end
+end
+
+function NpcInput:applyDirection(direction)
+	self.inputState.left = direction > 0
+	self.inputState.right = direction < 0
 end
 
 return NpcInput
