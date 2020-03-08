@@ -3,7 +3,7 @@ local PlayerInput = {}
 registerComponent(PlayerInput, "PlayerInput")
 
 function PlayerInput:awake()
-	self.inputState = {up = false, down = false, left = false, right = false}
+	self.inputState = {left = false, right = false}
 end
 
 function PlayerInput:onKeyPress(button, scancode, wasRelease)

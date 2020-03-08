@@ -1,4 +1,4 @@
-local Task = require("wwu/data/task")
+local Task = require("data/task")
 local Plan = {}
 
 function Plan.new()

@@ -1,6 +1,6 @@
 local Scene = require("nx/game/scene")
-local Task = require("wwu/data/task")
-local Plan = require("wwu/data/plan")
+local Task = require("data/task")
+local Plan = require("data/plan")
 local scene = Scene.new()
 
 local world = scene:addActor()
@@ -85,29 +85,6 @@ local garyPlan = Plan.new()
 local gary = createNPC(room1, 300, "Gary", garyPlan)
 
 local johnPlan = Plan.new()
-local john = createNPC(room1, 100, "John", johnPlan)
-
-garyPlan:appendTask(
-	Task.new(
-		"wait",
-		gary,
-		function(actor, target)
-			return false
-		end
-	)
-)
-johnPlan:appendTask(
-	Task.new(
-		"interact",
-		gary,
-		function(actor, target)
-			if actor:pos():distanceTo(target:pos()) < 50 then
-				return true
-			else
-				return false
-			end
-		end
-	)
-)
+local john = createNPC(room2, 100, "John", johnPlan)
 
 return scene

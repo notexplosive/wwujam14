@@ -7,10 +7,11 @@ function NpcInput:setup(plan)
 end
 
 function NpcInput:awake()
-	self.inputState = {up = false, down = false, left = false, right = false}
+	self.inputState = {left = false, right = false}
 end
 
 function NpcInput:update(dt)
+	--[[
 	local task = self.plan:getCurrentTask()
 	while task:checkCompletion(self.actor) do
 		self.plan:advanceToNextTask()
@@ -23,6 +24,7 @@ function NpcInput:update(dt)
 	self.inputState.right = direction.x > 0
 
 	self.inputState.left = direction.x < 0
+	]]
 end
 
 function NpcInput:getInputState()
