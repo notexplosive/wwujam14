@@ -6,8 +6,8 @@ function Sprite.new(filename, gridSizeX, gridSizeY)
     self.image = love.graphics.newImage(filename)
     self.image:setFilter("nearest", "nearest")
     self.animations = {}
-    self.gridWidth = gridSizeX
-    self.gridHeight = gridSizeY
+    self.gridWidth = gridSizeX or self.image:getWidth()
+    self.gridHeight = gridSizeY or self.image:getHeight()
     self.quads = {}
 
     assert(

@@ -19,6 +19,7 @@ function SpriteRenderer:setup(spriteName, anim, scale, color, offx, offy)
     self.scale = scale or self.scale
     self.color = color or self.color
 
+    --[[
     if self.actor.BoundingBox then
         local x, y, w, h = self:getBoundingBox():xywh()
         self.actor.BoundingBox:setup(
@@ -28,6 +29,7 @@ function SpriteRenderer:setup(spriteName, anim, scale, color, offx, offy)
             self.sprite.gridHeight * self:getScaleY() / 2
         )
     end
+    ]]
 end
 
 function SpriteRenderer:awake()

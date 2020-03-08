@@ -16,6 +16,7 @@ function createRoom(name, pos, size, floorHeight)
 	room:addComponent(Components.BoundingBoxRenderer)
 	room:addComponent(Components.Room, floorHeight or 250)
 	room:addComponent(Components.TextRenderer, name)
+	--room:addComponent(Components.SpriteRenderer, "background-brick")
 	return room
 end
 
@@ -27,6 +28,7 @@ function createItem(room, x, itemName)
 	item:addComponent(Components.Collider, 20)
 	item:addComponent(Components.CircleRenderer, 5)
 	item:addComponent(Components.Item, itemName)
+	item:addComponent(Components.CharacterSpriteRenderer, "cake")
 	item.name = itemName
 	return item
 end
@@ -44,6 +46,7 @@ function createPlayer(room, x)
 	player:addComponent(Components.CanTalkToNpcs)
 	player:addComponent(Components.Collider, 20)
 	player:addComponent(Components.Movement, player.PlayerInput)
+	player:addComponent(Components.CharacterSpriteRenderer, "person")
 
 	return player
 end
@@ -60,6 +63,7 @@ function createNPC(room, x, name)
 	npc:addComponent(Components.Collider, 20)
 	npc:addComponent(Components.Movement, npc.NpcInput)
 	npc:addComponent(Components.Plan)
+	npc:addComponent(Components.CharacterSpriteRenderer, "person")
 
 	return npc
 end
@@ -69,10 +73,12 @@ function createDoorPair(room1, room1X, room2, room2X)
 	local door1 = scene:addActor()
 	door1:setPos(room1:pos().x + room1X, room1:pos().y)
 	door1:addComponent(Components.Collider, doorWidth)
+	--door1:addComponent(Components.CharacterSpriteRenderer, "door")
 
 	local door2 = scene:addActor()
 	door2:setPos(room2:pos().x + room2X, room2:pos().y)
 	door2:addComponent(Components.Collider, doorWidth)
+	--door2:addComponent(Components.CharacterSpriteRenderer, "door")
 
 	door1:addComponent(Components.Door, door2)
 	door2:addComponent(Components.Door, door1)

@@ -1,4 +1,4 @@
-seeking
 assets
+camera
 file represenation of mansion
 file represenation of npc plan
