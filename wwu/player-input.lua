@@ -6,6 +6,10 @@ function PlayerInput:awake()
 	self.inputState = {left = false, right = false}
 end
 
+function PlayerInput:getSpeed()
+	return 300
+end
+
 function PlayerInput:onKeyPress(button, scancode, wasRelease)
 	if button == "left" or button == "right" then
 		self.inputState[button] = not wasRelease

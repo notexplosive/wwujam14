@@ -5,6 +5,10 @@ registerComponent(NpcInput, "NpcInput")
 function NpcInput:setup()
 end
 
+function NpcInput:getSpeed()
+	return 150
+end
+
 function NpcInput:awake()
 	self.inputState = {left = false, right = false}
 	self.interactTimer = 0

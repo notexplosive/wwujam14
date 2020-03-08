@@ -6,7 +6,7 @@ function Movement:setup(inputComponent)
 	self.inputComponent = inputComponent
 
 	self.velocity = Vector.new()
-	self.moveSpeed = 300 -- per second
+	self.moveSpeed = inputComponent:getSpeed()
 
 	self.hitWallThisFrame = false
 end
