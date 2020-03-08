@@ -9,7 +9,8 @@ function BackgroundRenderer:setup(imageName)
 
     local w, h = self.actor.BoundingBox:getDimensions()
     local sw, sh = self.image:getDimensions()
-    self.quad = love.graphics.newQuad(0, (sh - h * scale) + 100, w * scale, h * scale, sw, sh)
+    self.image:setWrap("repeat", "clamp")
+    self.quad = love.graphics.newQuad(0, (sh - h * scale) + 120, w * scale, h * scale, sw, sh)
 end
 
 function BackgroundRenderer:draw(x, y)
