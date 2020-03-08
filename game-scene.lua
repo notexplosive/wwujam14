@@ -36,6 +36,12 @@ player:addComponent(Components.Collider, 20)
 player:addComponent(Components.Movement, player.PlayerInput)
 player:addComponent(Components.CanTraverseDoors)
 
+local item = scene:addActor()
+item:setPos(400, 200)
+item:addComponent(Components.Collider, 20)
+item:addComponent(Components.CircleRenderer, 5)
+item:addComponent(Components.Item)
+
 local garyPlan = Plan.new()
 local gary = scene:addActor()
 gary:setPos(500, 200)

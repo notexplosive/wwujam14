@@ -6,7 +6,7 @@ function Movement:setup(inputComponent)
 	self.inputComponent = inputComponent
 
 	self.velocity = Vector.new()
-	self.moveSpeed = 600 -- per second
+	self.moveSpeed = 300 -- per second
 end
 
 function Movement:update(dt)
