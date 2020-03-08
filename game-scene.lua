@@ -53,19 +53,29 @@ function createNPC(room, x, name, plan)
 	return npc
 end
 
+function createDoorPair(room1, room1X, room2, room2X)
+	local doorWidth = 40
+	local door = scene:addActor()
+	door:setPos(room1:pos().x + room1X, room1:pos().y)
+	door:addComponent(Components.Collider, doorWidth)
+
+	local door2 = scene:addActor()
+	door2:setPos(room2:pos().x + room2X, room2:pos().y)
+	door2:addComponent(Components.Collider, doorWidth)
+
+	door:addComponent(Components.Door, door2)
+	door2:addComponent(Components.Door, door)
+end
+
+--------------------------------------------
+--------------------------------------------
+--------------------------------------------
+--------------------------------------------
+
 local room1 = createRoom(100, 200, 500, 300, 250)
 local room2 = createRoom(800, 50, 500, 300, 250)
 
-local door = scene:addActor()
-door:setPos(125, 200)
-door:addComponent(Components.Collider, 40)
-
-local door2 = scene:addActor()
-door2:setPos(900, 200)
-door2:addComponent(Components.Collider, 40)
-
-door:addComponent(Components.Door, door2)
-door2:addComponent(Components.Door, door)
+createDoorPair(room1, 50, room2, 50)
 
 local player = createPlayer(room1, 300)
 
