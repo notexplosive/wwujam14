@@ -9,32 +9,48 @@ end
 function PathfindToRoom:update(dt)
 	assert(self.targetRoom)
 	self:calculatePath()
+
+	local nextRoom = self.actor.PathfindToRoom:getNextRoom()
+	local currentRoom = self.actor.Floorable:getCurrentRoom()
+
+	if nextRoom == currentRoom then
+		deleteAt(self.path, 2)
+	end
 end
 
 function PathfindToRoom:assignTargetRoom(targetRoom)
+	self.hasCachedPath = false
 	self.targetRoom = targetRoom
 	self.path = {}
 	self:calculatePath()
+
+	local pathString = ""
+	for i, v in ipairs(self.path) do
+		pathString = pathString .. v.name .. " -> "
+	end
+	debugLog("DESTINATION:", targetRoom.name)
+	debugLog(pathString)
+
 	assert(self.targetRoom)
 end
 
 function PathfindToRoom:calculatePath()
+	if self.hasCachedPath then
+		return
+	end
+
 	local currentRoom = self.actor.Floorable:getCurrentRoom()
 	local visitedRooms = {}
 	visitedRooms[currentRoom.name] = true
 	local path = {}
 
 	local result = self:visit(currentRoom, visitedRooms, self.targetRoom, path)
-	--[[
-	local debugstring = ""
-	for i, v in ipairs(path) do
-		debugstring = debugstring .. v.name .. ","
-	end
-	debugLog(debugstring)
-]]
+
 	if result then
 		self.path = copyReversed(path)
 	end
+
+	self.hasCachedPath = true
 end
 
 function PathfindToRoom:visit(currentRoom, visitedRooms, destination, path)
@@ -68,7 +84,7 @@ function PathfindToRoom:getNextRoom()
 end
 
 function PathfindToRoom:isInTargetRoom()
-	return #self.path == 1
+	return self.actor.Floorable:getCurrentRoom() == self.targetRoom
 end
 
 function PathfindToRoom:getTargetDoor()
@@ -80,7 +96,7 @@ function PathfindToRoom:getTargetDoor()
 		end
 	end
 
-	return nilisInTargetRoom
+	return nil
 end
 
 function PathfindToRoom:getDirection()

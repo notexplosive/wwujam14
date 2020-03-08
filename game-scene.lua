@@ -85,8 +85,8 @@ function createDoorPair(room1, room1X, room2, room2X)
 	door1:addComponent(Components.Door, door2)
 	door2:addComponent(Components.Door, door1)
 
-	door1.name = room1.name .. " Door"
-	door2.name = room2.name .. " Door"
+	door1.name = room2.name .. " Door"
+	door2.name = room1.name .. " Door"
 end
 
 function validateRooms(roomList)

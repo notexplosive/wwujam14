@@ -1,5 +1,7 @@
-fix pathing bug
+items hold higher above your head
 doors player cannot access
+clock
+background objects
 
 
 assets
