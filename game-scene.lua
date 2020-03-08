@@ -108,29 +108,61 @@ end
 --------------------------------------------
 
 GLOBAL_ROOMS = {
-	createRoom("First Room", Vector.new(100, 200), Size.new(300, 300), 250),
-	createRoom("Room, The Second", Vector.new(800, 50), Size.new(1000, 300), 250),
-	createRoom("Bathroom", Vector.new(800, 500), Size.new(500, 300), 250),
-	createRoom("Room Room", Vector.new(300, 500), Size.new(500, 300), 250)
+	-------------------------------------------------------------------
+	createRoom("Foyer", Vector.new(0, 0), Size.new(750, 300), 250), --1
+	createRoom("Hallway Upstairs One", Vector.new(0, 500), Size.new(750, 300), 250), --2
+	createRoom("Library", Vector.new(0, 1000), Size.new(500, 300), 250), --3
+	createRoom("Balcony", Vector.new(0, 1500), Size.new(500, 300), 250), --4
+	createRoom("Hallway Upstairs Two", Vector.new(0, 2000), Size.new(1000, 300), 250), --5
+	createRoom("Bathroom", Vector.new(0, 2500), Size.new(400, 300), 250), --6
+	createRoom("Dining Room", Vector.new(0, 3000), Size.new(750, 300), 250), --7
+	createRoom("Courtyard", Vector.new(0, 3500), Size.new(500, 300), 250), --8
+	createRoom("Kitchen", Vector.new(0, 4000), Size.new(500, 300), 250), --9
+	createRoom("Living Room", Vector.new(0, 4500), Size.new(500, 300), 250), --10
+	createRoom("Hallway Downstairs Three", Vector.new(0, 5000), Size.new(500, 300), 250), --11
+	createRoom("Rec Room", Vector.new(0, 5500), Size.new(750, 300), 250), --12
+	createRoom("Hallway Downstairs Five", Vector.new(0, 6000), Size.new(750, 300), 250), --13
+	createRoom("Hallway Downstairs One", Vector.new(0, 6500), Size.new(750, 300), 250), --14
+	--Cult Room
+	createRoom("NPC ONE", Vector.new(0, 7000), Size.new(5000, 300), 250), --15
+	createRoom("NPC TWO", Vector.new(0, 7500), Size.new(500, 300), 250), --16
+	createRoom("NPC THREE", Vector.new(0, 8000), Size.new(500, 300), 250), --17
+	createRoom("NPC FOUR", Vector.new(0, 8500), Size.new(500, 300), 250) --18
 }
 validateRooms(GLOBAL_ROOMS)
 
 createDoorPair(GLOBAL_ROOMS[1], 50, GLOBAL_ROOMS[2], 50)
-createDoorPair(GLOBAL_ROOMS[2], 200, GLOBAL_ROOMS[3], 50)
-createDoorPair(GLOBAL_ROOMS[2], 100, GLOBAL_ROOMS[4], 20)
+createDoorPair(GLOBAL_ROOMS[1], 700, GLOBAL_ROOMS[14], 50)
+createDoorPair(GLOBAL_ROOMS[2], 450, GLOBAL_ROOMS[4], 50)
+createDoorPair(GLOBAL_ROOMS[2], 275, GLOBAL_ROOMS[3], 50)
+createDoorPair(GLOBAL_ROOMS[3], 450, GLOBAL_ROOMS[5], 50)
+createDoorPair(GLOBAL_ROOMS[5], 350, GLOBAL_ROOMS[15], 50)
+createDoorPair(GLOBAL_ROOMS[5], 650, GLOBAL_ROOMS[6], 50)
+createDoorPair(GLOBAL_ROOMS[5], 950, GLOBAL_ROOMS[7], 50)
+createDoorPair(GLOBAL_ROOMS[7], 375, GLOBAL_ROOMS[8], 50)
+createDoorPair(GLOBAL_ROOMS[7], 700, GLOBAL_ROOMS[9], 50)
+createDoorPair(GLOBAL_ROOMS[9], 450, GLOBAL_ROOMS[10], 50)
+createDoorPair(GLOBAL_ROOMS[10], 450, GLOBAL_ROOMS[11], 50)
+createDoorPair(GLOBAL_ROOMS[11], 450, GLOBAL_ROOMS[12], 50)
+createDoorPair(GLOBAL_ROOMS[12], 375, GLOBAL_ROOMS[14], 700)
+createDoorPair(GLOBAL_ROOMS[12], 700, GLOBAL_ROOMS[13], 50)
+createDoorPair(GLOBAL_ROOMS[13], 375, GLOBAL_ROOMS[16], 50)
+createDoorPair(GLOBAL_ROOMS[13], 700, GLOBAL_ROOMS[17], 50)
+createDoorPair(GLOBAL_ROOMS[14], 375, GLOBAL_ROOMS[18], 50)
 
 local player = createPlayer(GLOBAL_ROOMS[1], 100)
-
+--[[
 createItem(GLOBAL_ROOMS[1], 160, "plate")
 createItem(GLOBAL_ROOMS[2], 250, "fork")
-createItem(GLOBAL_ROOMS[2], 270, "spoon")
-
+createItem(GLOBAL_ROOMS[2], 350, "spoon")
+]]
+--[[
 local mary = createNPC(GLOBAL_ROOMS[1], 100, "Mary")
-
+]]
 local gary = createNPC(GLOBAL_ROOMS[1], 150, "Gary")
 gary.Plan:addAction(Components.GetItemInRoom, "spork")
 gary.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[4])
-
+--[[
 local john = createNPC(GLOBAL_ROOMS[2], 300, "John")
 
 local johnPlan = john.Plan
@@ -142,7 +174,7 @@ johnPlan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[2])
 johnPlan:addAction(Components.GetItemInRoom, "fork")
 johnPlan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[4])
 johnPlan:addAction(Components.DropItemInRoom)
-
+]]
 --[[
 	John is in room 2
 	John goes to room 1
