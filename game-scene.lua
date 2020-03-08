@@ -6,7 +6,7 @@ local world = scene:addActor()
 world:addComponent(Components.Viewport, 1)
 world:addComponent(Components.CloseOnEscape)
 
-function createRoom(name, pos, size, floorHeight)
+function createRoom(name, pos, size, imageName)
 	assert(name and pos and size)
 
 	local room = scene:addActor()
@@ -14,9 +14,9 @@ function createRoom(name, pos, size, floorHeight)
 	room:setPos(pos)
 	room:addComponent(Components.BoundingBox, size:wh())
 	room:addComponent(Components.BoundingBoxRenderer)
-	room:addComponent(Components.Room, floorHeight or 250)
+	room:addComponent(Components.Room, 250)
 	room:addComponent(Components.TextRenderer, name)
-	room:addComponent(Components.BackgroundRenderer, "background-brick")
+	room:addComponent(Components.BackgroundRenderer, imageName or "background-brick")
 
 	return room
 end
@@ -109,25 +109,25 @@ end
 
 GLOBAL_ROOMS = {
 	-------------------------------------------------------------------
-	createRoom("Foyer", Vector.new(0, 0), Size.new(750, 300), 250), --1
-	createRoom("Hallway Upstairs One", Vector.new(0, 500), Size.new(750, 300), 250), --2
-	createRoom("Library", Vector.new(0, 1000), Size.new(500, 300), 250), --3
-	createRoom("Balcony", Vector.new(0, 1500), Size.new(500, 300), 250), --4
-	createRoom("Hallway Upstairs Two", Vector.new(0, 2000), Size.new(1000, 300), 250), --5
-	createRoom("Bathroom", Vector.new(0, 2500), Size.new(400, 300), 250), --6
-	createRoom("Dining Room", Vector.new(0, 3000), Size.new(750, 300), 250), --7
-	createRoom("Courtyard", Vector.new(0, 3500), Size.new(500, 300), 250), --8
-	createRoom("Kitchen", Vector.new(0, 4000), Size.new(500, 300), 250), --9
-	createRoom("Living Room", Vector.new(0, 4500), Size.new(500, 300), 250), --10
-	createRoom("Hallway Downstairs Three", Vector.new(0, 5000), Size.new(500, 300), 250), --11
-	createRoom("Rec Room", Vector.new(0, 5500), Size.new(750, 300), 250), --12
-	createRoom("Hallway Downstairs Five", Vector.new(0, 6000), Size.new(750, 300), 250), --13
-	createRoom("Hallway Downstairs One", Vector.new(0, 6500), Size.new(750, 300), 250), --14
+	createRoom("Foyer", Vector.new(0, 0), Size.new(750, 300), "background-brick"), --1
+	createRoom("Hallway Upstairs One", Vector.new(0, 500), Size.new(750, 300), "background-brick"), --2
+	createRoom("Library", Vector.new(0, 1000), Size.new(500, 300), "background-brick"), --3
+	createRoom("Balcony", Vector.new(0, 1500), Size.new(500, 300), "background-brick"), --4
+	createRoom("Hallway Upstairs Two", Vector.new(0, 2000), Size.new(1000, 300), "background-brick"), --5
+	createRoom("Bathroom", Vector.new(0, 2500), Size.new(400, 300), "background-brick"), --6
+	createRoom("Dining Room", Vector.new(0, 3000), Size.new(750, 300), "background-brick"), --7
+	createRoom("Courtyard", Vector.new(0, 3500), Size.new(500, 300), "background-brick"), --8
+	createRoom("Kitchen", Vector.new(0, 4000), Size.new(500, 300), "background-brick"), --9
+	createRoom("Living Room", Vector.new(0, 4500), Size.new(500, 300), "background-brick"), --10
+	createRoom("Hallway Downstairs Three", Vector.new(0, 5000), Size.new(500, 300), "background-brick"), --11
+	createRoom("Rec Room", Vector.new(0, 5500), Size.new(750, 300), "background-brick"), --12
+	createRoom("Hallway Downstairs Five", Vector.new(0, 6000), Size.new(750, 300), "background-brick"), --13
+	createRoom("Hallway Downstairs One", Vector.new(0, 6500), Size.new(750, 300), "background-brick"), --14
 	--Cult Room
-	createRoom("NPC ONE", Vector.new(0, 7000), Size.new(5000, 300), 250), --15
-	createRoom("NPC TWO", Vector.new(0, 7500), Size.new(500, 300), 250), --16
-	createRoom("NPC THREE", Vector.new(0, 8000), Size.new(500, 300), 250), --17
-	createRoom("NPC FOUR", Vector.new(0, 8500), Size.new(500, 300), 250) --18
+	createRoom("NPC ONE", Vector.new(0, 7000), Size.new(5000, 300), "background-brick"), --15
+	createRoom("NPC TWO", Vector.new(0, 7500), Size.new(500, 300), "background-brick"), --16
+	createRoom("NPC THREE", Vector.new(0, 8000), Size.new(500, 300), "background-brick"), --17
+	createRoom("NPC FOUR", Vector.new(0, 8500), Size.new(500, 300), "background-brick") --18
 }
 validateRooms(GLOBAL_ROOMS)
 
