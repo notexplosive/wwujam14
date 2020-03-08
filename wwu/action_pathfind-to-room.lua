@@ -25,7 +25,13 @@ function PathfindToRoom:calculatePath()
 	local path = {}
 
 	local result = self:visit(currentRoom, visitedRooms, self.targetRoom, path)
-
+	--[[
+	local debugstring = ""
+	for i, v in ipairs(path) do
+		debugstring = debugstring .. v.name .. ","
+	end
+	debugLog(debugstring)
+]]
 	if result then
 		self.path = copyReversed(path)
 	end
