@@ -1,6 +1,6 @@
 local DropItemInRoom = {}
 
-registerComponent(DropItemInRoom, "DropItemInRoom", {"CanTraverseDoors", "Inventory", "Movement"})
+registerComponent(DropItemInRoom, "DropItemInRoom", {"CanTraverseDoors", "CanHoldItems", "Movement"})
 
 function DropItemInRoom:setup(startingDirection)
     self.currentDirection = startingDirection
@@ -17,20 +17,23 @@ function DropItemInRoom:update(dt)
 end
 
 function DropItemInRoom:isOverlappingDoorOrItem()
-    return self.actor.CanTraverseDoors:getCurrentDoor() ~= nil or self.actor.Inventory:getOverlappedItem() ~= nil
+    return self.actor.CanTraverseDoors:getCurrentDoor() ~= nil or self.actor.CanHoldItems:getOverlappedItem() ~= nil
 end
 
 function DropItemInRoom:getDirection()
-    assert(self.actor.Inventory:isHolding(), self.actor.name .. " had action DropItemInRoom, was not holding an item")
+    assert(
+        self.actor.CanHoldItems:isHolding(),
+        self.actor.name .. " had action DropItemInRoom, was not holding an item"
+    )
     return self.currentDirection
 end
 
 function DropItemInRoom:isReadyToInteract()
-    return self.actor.Inventory:isHolding() and not self:isOverlappingDoorOrItem()
+    return self.actor.CanHoldItems:isHolding() and not self:isOverlappingDoorOrItem()
 end
 
 function DropItemInRoom:isFinished()
-    return not self.actor.Inventory:isHolding()
+    return not self.actor.CanHoldItems:isHolding()
 end
 
 return DropItemInRoom

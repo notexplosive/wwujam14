@@ -1,6 +1,6 @@
 local GetItemInRoom = {}
 
-registerComponent(GetItemInRoom, "GetItemInRoom", {"Inventory"})
+registerComponent(GetItemInRoom, "GetItemInRoom", {"CanHoldItems"})
 
 function GetItemInRoom:setup(itemName)
 	self.targetItemName = itemName
@@ -28,11 +28,11 @@ function GetItemInRoom:findItemInRoom()
 end
 
 function GetItemInRoom:isFinished()
-	return self.actor.Inventory:isHolding()
+	return self.actor.CanHoldItems:isHolding()
 end
 
 function GetItemInRoom:isReadyToInteract()
-	local item = self.actor.Inventory:getOverlappedItem()
+	local item = self.actor.CanHoldItems:getOverlappedItem()
 	return item and item.Item.itemName == self.targetItemName
 end
 

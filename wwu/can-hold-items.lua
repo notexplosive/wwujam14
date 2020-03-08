@@ -1,18 +1,18 @@
-local Inventory = {}
+local CanHoldItems = {}
 
-registerComponent(Inventory, "Inventory")
+registerComponent(CanHoldItems, "CanHoldItems")
 
-function Inventory:awake()
+function CanHoldItems:awake()
 	self.currentHeldItem = nil
 end
 
-function Inventory:draw(x, y)
+function CanHoldItems:draw(x, y)
 	if self:isHolding() then
 		self.currentHeldItem:draw(x, y - 25)
 	end
 end
 
-function Inventory:getOverlappedItem()
+function CanHoldItems:getOverlappedItem()
 	local myBounds = self.actor.BoundingBox:getRect()
 	for i, itemActor in self.actor:scene():eachActorWith(Components.Item) do
 		local itemBounds = itemActor.BoundingBox:getRect()
@@ -24,7 +24,7 @@ function Inventory:getOverlappedItem()
 	return nil
 end
 
-function Inventory:onInteract()
+function CanHoldItems:onInteract()
 	local item = self:getOverlappedItem()
 	if item then
 		if not self:isHolding() then
@@ -39,17 +39,17 @@ function Inventory:onInteract()
 	end
 end
 
-function Inventory:isHolding()
+function CanHoldItems:isHolding()
 	return self.currentHeldItem ~= nil
 end
 
-function Inventory:pickUp(item)
+function CanHoldItems:pickUp(item)
 	debugLog(self.actor.name .. " picked up " .. item.Item.itemName)
 	self.currentHeldItem = item
 	self.currentHeldItem:removeFromScene()
 end
 
-function Inventory:dropItem()
+function CanHoldItems:dropItem()
 	debugLog(self.actor.name .. " dropped up " .. self.currentHeldItem.Item.itemName)
 
 	self.currentHeldItem:setPos(self.actor:pos())
@@ -57,4 +57,4 @@ function Inventory:dropItem()
 	self.currentHeldItem = nil
 end
 
-return Inventory
+return CanHoldItems
