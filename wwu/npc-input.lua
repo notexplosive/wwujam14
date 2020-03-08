@@ -15,7 +15,7 @@ function NpcInput:update(dt)
 		if self.actor.PathfindToRoom.path then
 			local direction = self.actor.PathfindToRoom:getDirection()
 
-			if math.abs(direction) < 5 and not self.actor.PathfindToRoom:isFinished() then
+			if self.actor.PathfindToRoom:isAble() and not self.actor.PathfindToRoom:isFinished() then
 				self:attemptInteract(dt)
 				direction = 0
 			end
