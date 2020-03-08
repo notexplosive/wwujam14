@@ -6,7 +6,7 @@ local scene = Scene.new()
 local world = scene:addActor()
 world:addComponent(Components.Viewport, 1)
 
-local function createRoom(x, y, w, h, floorHeight)
+function createRoom(x, y, w, h, floorHeight)
 	assert(x and y and w and h)
 
 	local room = scene:addActor()
@@ -17,29 +17,6 @@ local function createRoom(x, y, w, h, floorHeight)
 
 	return room
 end
-
-createRoom(100, 0, 500, 300, 250)
-createRoom(800, 50, 500, 300, 250)
-
-local door = scene:addActor()
-door:setPos(125, 200)
-door:addComponent(Components.Collider, 40)
-
-local door2 = scene:addActor()
-door2:setPos(900, 200)
-door2:addComponent(Components.Collider, 40)
-
-door:addComponent(Components.Door, door2)
-door2:addComponent(Components.Door, door)
-
-local player = scene:addActor()
-player:setPos(300, 200)
-player.name = "Player"
-player:addComponent(Components.PlayerInput)
-player:addComponent(Components.Collider, 20)
-player:addComponent(Components.Movement, player.PlayerInput)
-player:addComponent(Components.CanTraverseDoors)
-player:addComponent(Components.Inventory)
 
 function createItem(x, y, itemName)
 	assert(x and y and itemName)
@@ -52,24 +29,51 @@ function createItem(x, y, itemName)
 	return item
 end
 
-createItem(400, 200, "plate")
-
-function createNPC()
+function createPlayer(x, y)
+	local player = scene:addActor()
+	player:setPos(x, y)
+	player.name = "Player"
+	player:addComponent(Components.PlayerInput)
+	player:addComponent(Components.Collider, 20)
+	player:addComponent(Components.Movement, player.PlayerInput)
+	player:addComponent(Components.CanTraverseDoors)
+	player:addComponent(Components.Inventory)
 end
 
+function createNPC(x, y, name, plan)
+	assert(x and y and name and plan)
+	local npc = scene:addActor()
+	npc.name = name
+	npc:setPos(x, y)
+	npc:addComponent(Components.NpcInput, plan)
+	npc:addComponent(Components.Collider, 20)
+	npc:addComponent(Components.Movement, npc.NpcInput)
+	return npc
+end
+
+local room1 = createRoom(100, 0, 500, 300, 250)
+local room2 = createRoom(800, 50, 500, 300, 250)
+
+local door = scene:addActor()
+door:setPos(125, 200)
+door:addComponent(Components.Collider, 40)
+
+local door2 = scene:addActor()
+door2:setPos(900, 200)
+door2:addComponent(Components.Collider, 40)
+
+door:addComponent(Components.Door, door2)
+door2:addComponent(Components.Door, door)
+
+local player = createPlayer(300, 200)
+
+createItem(400, 200, "plate")
+
 local garyPlan = Plan.new()
-local gary = scene:addActor()
-gary:setPos(500, 200)
-gary:addComponent(Components.NpcInput, garyPlan)
-gary:addComponent(Components.Collider, 23)
-gary:addComponent(Components.Movement, gary.NpcInput)
+local gary = createNPC(500, 200, "Gary", garyPlan)
 
 local johnPlan = Plan.new()
-local john = scene:addActor()
-john:setPos(250, 200)
-john:addComponent(Components.NpcInput, johnPlan)
-john:addComponent(Components.Collider, 23)
-john:addComponent(Components.Movement, john.NpcInput)
+local john = createNPC(250, 200, "John", johnPlan)
 
 garyPlan:appendTask(
 	Task.new(
