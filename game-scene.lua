@@ -5,6 +5,7 @@ local scene = Scene.new()
 local world = scene:addActor()
 world:addComponent(Components.Viewport, 1)
 world:addComponent(Components.CloseOnEscape)
+world:addComponent(Components.EndCondition)
 
 local itemShader = love.graphics.newShader("assets/shaders/item_highlight_temp.glsl")
 
@@ -78,17 +79,17 @@ function createBackgroundObject(room, x, y, spriteName)
 	object:setPos(room:pos().x + x, room:pos().y + y + 150)
 	object:addComponent(Components.ImageRenderer, spriteName)
 end
-function createDoorPair(room1, room1X, room2, room2X)
+function createDoorPair(room1, room1X, room2, room2X, imageName)
 	local doorWidth = 100
 	local door1 = scene:addActor()
 	door1:setPos(room1:pos().x + room1X, room1:pos().y)
 	door1:addComponent(Components.Collider, doorWidth)
-	door1:addComponent(Components.ImageRenderer, "door")
+	door1:addComponent(Components.ImageRenderer, imageName or "door")
 
 	local door2 = scene:addActor()
 	door2:setPos(room2:pos().x + room2X, room2:pos().y)
 	door2:addComponent(Components.Collider, doorWidth)
-	door2:addComponent(Components.ImageRenderer, "door")
+	door2:addComponent(Components.ImageRenderer, imageName or "door")
 
 	door1:addComponent(Components.Door, door2)
 	door2:addComponent(Components.Door, door1)
@@ -129,7 +130,7 @@ GLOBAL_ROOMS = {
 	createRoom("Hallway Downstairs Two", Vector.new(0, 10000), Size.new(750, 300), "background-brick"), --11
 	createRoom("Rec Room", Vector.new(0, 11000), Size.new(1000, 300), "background-wood"), --12
 	createRoom("Hallway Downstairs Three", Vector.new(0, 120000), Size.new(800, 300), "background-brick"), --13
-	createRoom("Hallway Downstairs One", Vector.new(0, 13000), Size.new(950, 300), "background-brick"), --14
+	createRoom("Hallway Downstairs One", Vector.new(0, 13000), Size.new(800, 300), "background-brick"), --14
 	--Cult Room
 	createRoom("NPC ONE", Vector.new(0, 14000), Size.new(5000, 300), "background-brick", true), --15
 	createRoom("NPC TWO", Vector.new(0, 15000), Size.new(500, 300), "background-brick", true), --16
@@ -138,51 +139,50 @@ GLOBAL_ROOMS = {
 }
 validateRooms(GLOBAL_ROOMS)
 
-createDoorPair(GLOBAL_ROOMS[1], 50, GLOBAL_ROOMS[2], 50)
+createDoorPair(GLOBAL_ROOMS[1], 50, GLOBAL_ROOMS[2], 50, "stair")
 createDoorPair(GLOBAL_ROOMS[1], 700, GLOBAL_ROOMS[14], 50)
-createDoorPair(GLOBAL_ROOMS[2], 450, GLOBAL_ROOMS[4], 50)
+createDoorPair(GLOBAL_ROOMS[2], 450, GLOBAL_ROOMS[4], 50, "door-outside")
 createDoorPair(GLOBAL_ROOMS[2], 275, GLOBAL_ROOMS[3], 50)
 createDoorPair(GLOBAL_ROOMS[3], 450, GLOBAL_ROOMS[5], 50)
-createDoorPair(GLOBAL_ROOMS[5], 350, GLOBAL_ROOMS[15], 50)
+createDoorPair(GLOBAL_ROOMS[5], 350, GLOBAL_ROOMS[15], 50, "door-blocked")
 createDoorPair(GLOBAL_ROOMS[5], 650, GLOBAL_ROOMS[6], 50)
-createDoorPair(GLOBAL_ROOMS[5], 950, GLOBAL_ROOMS[7], 50)
-createDoorPair(GLOBAL_ROOMS[7], 375, GLOBAL_ROOMS[8], 50)
+createDoorPair(GLOBAL_ROOMS[5], 950, GLOBAL_ROOMS[7], 50, "stair")
+createDoorPair(GLOBAL_ROOMS[7], 375, GLOBAL_ROOMS[8], 50, "door-outside")
 createDoorPair(GLOBAL_ROOMS[7], 700, GLOBAL_ROOMS[9], 50)
 createDoorPair(GLOBAL_ROOMS[9], 450, GLOBAL_ROOMS[10], 50)
 createDoorPair(GLOBAL_ROOMS[10], 450, GLOBAL_ROOMS[11], 50)
 createDoorPair(GLOBAL_ROOMS[11], 450, GLOBAL_ROOMS[12], 50)
 createDoorPair(GLOBAL_ROOMS[12], 375, GLOBAL_ROOMS[14], 700)
 createDoorPair(GLOBAL_ROOMS[12], 700, GLOBAL_ROOMS[13], 50)
-createDoorPair(GLOBAL_ROOMS[13], 375, GLOBAL_ROOMS[16], 50)
-createDoorPair(GLOBAL_ROOMS[13], 700, GLOBAL_ROOMS[17], 50)
-createDoorPair(GLOBAL_ROOMS[14], 375, GLOBAL_ROOMS[18], 50)
+createDoorPair(GLOBAL_ROOMS[13], 375, GLOBAL_ROOMS[16], 50, "door-blocked")
+createDoorPair(GLOBAL_ROOMS[13], 700, GLOBAL_ROOMS[17], 50, "door-blocked")
+createDoorPair(GLOBAL_ROOMS[14], 375, GLOBAL_ROOMS[18], 50, "door-blocked")
 
 -- BACKGROUND ITEMS
 createBackgroundObject(GLOBAL_ROOMS[10], 250, 110, "couch")
 createBackgroundObject(GLOBAL_ROOMS[6], 375, 100, "bathtub")
-createBackgroundObject(GLOBAL_ROOMS[6], 200, 100, "sink")
-createBackgroundObject(GLOBAL_ROOMS[9], 200, 100, "sink")
+createBackgroundObject(GLOBAL_ROOMS[6], 150, 100, "sink")
+createBackgroundObject(GLOBAL_ROOMS[9], 150, 100, "sink")
 createBackgroundObject(GLOBAL_ROOMS[3], 200, 110, "bookcase")
 createBackgroundObject(GLOBAL_ROOMS[3], 600, 110, "bookcase")
-createBackgroundObject(GLOBAL_ROOMS[9], 200, 100, "table")
-createBackgroundObject(GLOBAL_ROOMS[7], 200, 100, "table")
+createBackgroundObject(GLOBAL_ROOMS[9], 285, 100, "table")
+createBackgroundObject(GLOBAL_ROOMS[9], 635, 100, "table")
+createBackgroundObject(GLOBAL_ROOMS[7], 535, 100, "table")
 createBackgroundObject(GLOBAL_ROOMS[12], 220, 100, "pool-table")
-createBackgroundObject(GLOBAL_ROOMS[13], 200, 100, "chalkboard")
+createBackgroundObject(GLOBAL_ROOMS[13], 540, 000, "chalkboard")
 
 createBackgroundObject(GLOBAL_ROOMS[1], 375, 0, "painting-1")
 createBackgroundObject(GLOBAL_ROOMS[11], 200, 0, "painting-2")
 createBackgroundObject(GLOBAL_ROOMS[14], 200, 0, "painting-3")
 createBackgroundObject(GLOBAL_ROOMS[1], 200, 0, "window")
 createBackgroundObject(GLOBAL_ROOMS[1], 550, 0, "window")
+createBackgroundObject(GLOBAL_ROOMS[11], 600, 0, "window")
+createBackgroundObject(GLOBAL_ROOMS[14], 525, 0, "window")
 
 -- /BACKGROUND ITEMS
 
-local player = createPlayer(GLOBAL_ROOMS[8], 100)
---[[
-	1 foyer 	2 hallway up1 	3 library	4 balcony	5 hallway up2	6 bathroom	7 dining room
-	8 Courtyard 	9 Kitchen	10 living room 	11 hallway down2	12 rec room	13 hallway down 3	14 hallway down 1
-]]
---item name, item image
+local player = createPlayer(GLOBAL_ROOMS[9], 100)
+--Items
 createItem(GLOBAL_ROOMS[10], 350, "candle")
 createItem(GLOBAL_ROOMS[7], 215, "candle")
 createItem(GLOBAL_ROOMS[3], 370, "candle")
@@ -194,7 +194,7 @@ createItem(GLOBAL_ROOMS[12], 460, "holly", "holly")
 createItem(GLOBAL_ROOMS[9], 370, "holly", "holly")
 createItem(GLOBAL_ROOMS[4], 500, "holly", "holly")
 createItem(GLOBAL_ROOMS[3], 300, "knife", "sword")
---sword
+
 createItem(GLOBAL_ROOMS[9], 220, "knife", "knife")
 createItem(GLOBAL_ROOMS[9], 150, "knife", "knife")
 createItem(GLOBAL_ROOMS[13], 540, "chalk", "chalk")
@@ -217,6 +217,7 @@ createItem(GLOBAL_ROOMS[10], 710, "junk", "globe")
 createItem(GLOBAL_ROOMS[9], 625, "junk", "cake")
 createItem(GLOBAL_ROOMS[6], 250, "junk", "mirror")
 createItem(GLOBAL_ROOMS[7], 570, "junk", "plate")
+--items
 
 --15 cult room
 local taylor = createNPC(GLOBAL_ROOMS[15], 150, "Taylor", "taylor")
@@ -335,26 +336,31 @@ josie.Plan:addAction(Components.DropItemInRoom)
 oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
 oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
 oldDude.Plan:addAction(Components.DropItemInRoom)
+oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[5])
 
 oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
 oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[18])
 oldDude.Plan:addAction(Components.DropItemInRoom)
+oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[14])
 
 oldDude.Plan:addAction(Components.NPCWait, 5)
 
 oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
 oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[18])
 oldDude.Plan:addAction(Components.DropItemInRoom)
+oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[14])
 
 oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
 oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
 oldDude.Plan:addAction(Components.DropItemInRoom)
+oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[5])
 
 oldDude.Plan:addAction(Components.NPCWait, 5)
 
 oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
 oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
 oldDude.Plan:addAction(Components.DropItemInRoom)
+oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[5])
 
 --spork hunter
 adrian.Plan:addAction(Components.GetItemInRoom, "spork")

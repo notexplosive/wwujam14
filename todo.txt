@@ -7,5 +7,9 @@ lose:
 win:
     - surive to 3AM
 
+indicate current
+
+play music
+
 optional door graphics
 perf optimization

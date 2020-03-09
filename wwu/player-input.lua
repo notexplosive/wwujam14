@@ -4,6 +4,11 @@ registerComponent(PlayerInput, "PlayerInput")
 
 function PlayerInput:awake()
 	self.inputState = {left = false, right = false}
+	self.time = 0
+end
+
+function PlayerInput:update(dt)
+	self.time = self.time + dt
 end
 
 function PlayerInput:getSpeed()
