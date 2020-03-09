@@ -68,6 +68,15 @@
 	"background-wood": [
 		"Background Wood.png"
 	],
+	"cultist-end": [
+		"Cultist End.png"
+	],
+	"win": [
+		"Win.png"
+	],
+	"spork-end": [
+		"Spork End.png"
+	],
 	"background-brick": [
 		"Background Brick.png"
 	],
@@ -92,6 +101,9 @@
 	"bust": [
 		"Bust.png"
 	],
+	"table": [
+		"Table.png"
+	],
 	"chalk": [
 		"Chalk.png"
 	],
@@ -113,6 +125,12 @@
 	"mirror": [
 		"Mirror.png"
 	],
+	"painting-1": [
+		"Painting 1.png"
+	],
+	"painting-2": [
+		"Painting 2.png"
+	],
 	"painting-3": [
 		"Painting 3.png"
 	],
@@ -130,6 +148,9 @@
 	],
 	"stair": [
 		"Stair.png"
+	],
+	"sink": [
+		"Sink.png"
 	],
 	"window": [
 		"Window.png"
