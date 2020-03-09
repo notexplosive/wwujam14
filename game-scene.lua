@@ -184,34 +184,13 @@ createItem(GLOBAL_ROOMS[12], 150, "plant", "holly")
 
 createItem(GLOBAL_ROOMS[3], 350, "book", "book")
 
---[[
-createItem(GLOBAL_ROOMS[1], 160, "plate", "cake")
-createItem(GLOBAL_ROOMS[2], 250, "fork", "cake")
-createItem(GLOBAL_ROOMS[2], 350, "spoon", "cake")
-]]
---[[
-local mary = createNPC(GLOBAL_ROOMS[1], 100, "Mary")
-]]
---[[
-local john = createNPC(GLOBAL_ROOMS[2], 300, "John")
-
-local johnPlan = john.Plan
-johnPlan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[1])
-johnPlan:addAction(Components.GetItemInRoom, "plate")
-johnPlan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[4])
-johnPlan:addAction(Components.DropItemInRoom)
-johnPlan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[2])
-johnPlan:addAction(Components.GetItemInRoom, "fork")
-johnPlan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[4])
-johnPlan:addAction(Components.DropItemInRoom)
-
-]]
 --15 cult room
 local taylor = createNPC(GLOBAL_ROOMS[15], 150, "Taylor", "taylor")
 local josie = createNPC(GLOBAL_ROOMS[18], 150, "Josie", "josie")
 local oldDude = createNPC(GLOBAL_ROOMS[1], 150, "Guy Jenkins Fury", "old-dude")
 local adrian = createNPC(GLOBAL_ROOMS[1], 250, "Adrian", "adrian")
 local frank = createNPC(GLOBAL_ROOMS[16], 250, "Frank", "frank")
+local kate = createNPC(GLOBAL_ROOMS[16], 250, "Kate", "kate")
 --
 taylor.Plan:addAction(Components.GetItemInRoom, "candle")
 taylor.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
@@ -275,6 +254,8 @@ josie.Plan:addAction(Components.GetItemInRoom, "candle")
 josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[12])
 josie.Plan:addAction(Components.DropItemInRoom)
 
+josie.Plan:addAction(Components.NPCWait, 5)
+
 josie.Plan:addAction(Components.GetItemInRoom, "candle")
 josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[1])
 josie.Plan:addAction(Components.DropItemInRoom)
@@ -290,6 +271,8 @@ josie.Plan:addAction(Components.DropItemInRoom)
 josie.Plan:addAction(Components.GetItemInRoom, "candle")
 josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[9])
 josie.Plan:addAction(Components.DropItemInRoom)
+
+josie.Plan:addAction(Components.NPCWait, 5)
 
 josie.Plan:addAction(Components.GetItemInRoom, "candle")
 josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[7])
@@ -307,6 +290,8 @@ josie.Plan:addAction(Components.GetItemInRoom, "candle")
 josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[1])
 josie.Plan:addAction(Components.DropItemInRoom)
 
+josie.Plan:addAction(Components.NPCWait, 5)
+
 josie.Plan:addAction(Components.GetItemInRoom, "candle")
 josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[13])
 josie.Plan:addAction(Components.DropItemInRoom)
@@ -321,6 +306,8 @@ oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
 oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[18])
 oldDude.Plan:addAction(Components.DropItemInRoom)
 
+oldDude.Plan:addAction(Components.NPCWait, 5)
+
 oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
 oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[18])
 oldDude.Plan:addAction(Components.DropItemInRoom)
@@ -328,6 +315,8 @@ oldDude.Plan:addAction(Components.DropItemInRoom)
 oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
 oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
 oldDude.Plan:addAction(Components.DropItemInRoom)
+
+oldDude.Plan:addAction(Components.NPCWait, 5)
 
 oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
 oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
@@ -339,14 +328,21 @@ adrian.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[9])
 
 --reader
 frank.Plan:addAction(Components.GetItemInRoom, "book")
-frank.Plan:addAction(Components.NPCWait, 5)
 frank.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[16])
---wait
-
+frank.Plan:addAction(Components.NPCWait, 30)
 frank.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[3])
+frank.Plan:addAction(Components.NPCWait, 5)
 frank.Plan:addAction(Components.DropItemInRoom)
---wait
 frank.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[16])
---wait
+frank.Plan:addAction(Components.NPCWait, 60)
 
+--kate
+local kateRooms = {7, 3, 2, 1, 5, 6, 8, 10, 14, 13, 4, 9, 12, 11}
+for i, v in ipairs(kateRooms) do
+	kate.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[kateRooms[i]])
+	kate.Plan:addAction(Components.GetItemInRoom, "junk")
+	kate.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[i])
+	kate.Plan:addAction(Components.NPCWait, 5)
+	kate.Plan:addAction(Components.DropItemInRoom)
+end
 return scene
