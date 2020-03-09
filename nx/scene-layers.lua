@@ -7,6 +7,10 @@ function SceneLayers.new()
     return self
 end
 
+function SceneLayers:clear()
+    self.list = {}
+end
+
 function SceneLayers:eachInDrawOrder()
     return ipairs(self.list)
 end

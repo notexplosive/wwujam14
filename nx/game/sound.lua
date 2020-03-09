@@ -4,10 +4,10 @@ local Sound = {}
 -- This is a problem for multiplexed loops, which don't come up very often.
 
 -- Called by templating code, should never be called directly.
-function Sound.new(filename,volume)
+function Sound.new(filename, volume)
     local self = newObject(Sound)
 
-    self.source = love.audio.newSource(filename, 'static')
+    self.source = love.audio.newSource(filename, "static")
     self.source:setVolume(volume or 1)
     self.source:setPitch(pitch or 1)
 

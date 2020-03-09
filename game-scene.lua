@@ -223,7 +223,7 @@ createItem(GLOBAL_ROOMS[7], 570, "junk", "plate")
 local taylor = createNPC(GLOBAL_ROOMS[15], 150, "Taylor", "taylor")
 local josie = createNPC(GLOBAL_ROOMS[18], 150, "Josie", "josie", 175)
 local oldDude = createNPC(GLOBAL_ROOMS[1], 150, "Guy Jenkins Fury", "old-dude", 150)
-local adrian = createNPC(GLOBAL_ROOMS[1], 250, "Adrian", "adrian", 75)
+local adrian = createNPC(GLOBAL_ROOMS[1], 250, "Adrian", "adrian", 275)
 local frank = createNPC(GLOBAL_ROOMS[16], 250, "Frank", "frank")
 local kate = createNPC(GLOBAL_ROOMS[16], 250, "Kate", "kate", 125)
 --
