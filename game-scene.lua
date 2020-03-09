@@ -69,15 +69,12 @@ function createNPC(room, x, name, spriteName, optionalSpeed)
 
 	return npc
 end
-
-function createBackgroundObject(room, x, spriteName)
+function createBackgroundObject(room, x, y, spriteName)
 	assert(room and x and spriteName)
 	local object = scene:addActor()
-	object:setPos(room:pos().x + x, room:pos().y)
-	object:addComponent(Components.Collider, 10)
+	object:setPos(room:pos().x + x, room:pos().y + y + 150)
 	object:addComponent(Components.ImageRenderer, spriteName)
 end
-
 function createDoorPair(room1, room1X, room2, room2X)
 	local doorWidth = 100
 	local door1 = scene:addActor()
@@ -117,7 +114,7 @@ end
 GLOBAL_ROOMS = {
 	-------------------------------------------------------------------
 	createRoom("Foyer", Vector.new(0, 0), Size.new(1000, 300), "background-wood"), --1
-	createRoom("Hallway Upstairs One", Vector.new(0, 1000), Size.new(1000, 300), "background-brick"), --2
+	createRoom("Hallway Upstairs One", Vector.new(0, 1000), Size.new(600, 300), "background-brick"), --2
 	createRoom("Library", Vector.new(0, 2000), Size.new(750, 300), "background-wood"), --3
 	createRoom("Balcony", Vector.new(0, 3000), Size.new(750, 300), "background-balcony"), --4
 	createRoom("Hallway Upstairs Two", Vector.new(0, 4000), Size.new(1000, 300), "background-brick"), --5
@@ -128,8 +125,8 @@ GLOBAL_ROOMS = {
 	createRoom("Living Room", Vector.new(0, 9000), Size.new(750, 300), "background-wood"), --10
 	createRoom("Hallway Downstairs Two", Vector.new(0, 10000), Size.new(750, 300), "background-brick"), --11
 	createRoom("Rec Room", Vector.new(0, 11000), Size.new(1000, 300), "background-wood"), --12
-	createRoom("Hallway Downstairs Three", Vector.new(0, 120000), Size.new(1000, 300), "background-brick"), --13
-	createRoom("Hallway Downstairs One", Vector.new(0, 13000), Size.new(1000, 300), "background-brick"), --14
+	createRoom("Hallway Downstairs Three", Vector.new(0, 120000), Size.new(800, 300), "background-brick"), --13
+	createRoom("Hallway Downstairs One", Vector.new(0, 13000), Size.new(950, 300), "background-brick"), --14
 	--Cult Room
 	createRoom("NPC ONE", Vector.new(0, 14000), Size.new(5000, 300), "background-brick", true), --15
 	createRoom("NPC TWO", Vector.new(0, 15000), Size.new(500, 300), "background-brick", true), --16
@@ -158,10 +155,26 @@ createDoorPair(GLOBAL_ROOMS[13], 700, GLOBAL_ROOMS[17], 50)
 createDoorPair(GLOBAL_ROOMS[14], 375, GLOBAL_ROOMS[18], 50)
 
 -- BACKGROUND ITEMS
-createBackgroundObject(GLOBAL_ROOMS[14], 200, "couch")
+createBackgroundObject(GLOBAL_ROOMS[10], 250, 110, "couch")
+createBackgroundObject(GLOBAL_ROOMS[6], 375, 100, "bathtub")
+createBackgroundObject(GLOBAL_ROOMS[6], 200, 100, "sink")
+createBackgroundObject(GLOBAL_ROOMS[9], 200, 100, "sink")
+createBackgroundObject(GLOBAL_ROOMS[3], 200, 110, "bookcase")
+createBackgroundObject(GLOBAL_ROOMS[3], 600, 110, "bookcase")
+createBackgroundObject(GLOBAL_ROOMS[9], 200, 100, "table")
+createBackgroundObject(GLOBAL_ROOMS[7], 200, 100, "table")
+createBackgroundObject(GLOBAL_ROOMS[12], 220, 100, "pool-table")
+createBackgroundObject(GLOBAL_ROOMS[13], 200, 100, "chalkboard")
+
+createBackgroundObject(GLOBAL_ROOMS[1], 375, 0, "painting-1")
+createBackgroundObject(GLOBAL_ROOMS[11], 200, 0, "painting-2")
+createBackgroundObject(GLOBAL_ROOMS[14], 200, 0, "painting-3")
+createBackgroundObject(GLOBAL_ROOMS[1], 200, 0, "window")
+createBackgroundObject(GLOBAL_ROOMS[1], 550, 0, "window")
+
 -- /BACKGROUND ITEMS
 
-local player = createPlayer(GLOBAL_ROOMS[14], 100)
+local player = createPlayer(GLOBAL_ROOMS[7], 100)
 --[[
 	1 foyer 	2 hallway up1 	3 library	4 balcony	5 hallway up2	6 bathroom	7 dining room
 	8 Courtyard 	9 Kitchen	10 living room 	11 hallway down2	12 rec room	13 hallway down 3	14 hallway down 1
@@ -176,31 +189,31 @@ createItem(GLOBAL_ROOMS[8], 150, "candle")
 createItem(GLOBAL_ROOMS[11], 245, "candle")
 createItem(GLOBAL_ROOMS[12], 460, "holly", "holly")
 createItem(GLOBAL_ROOMS[9], 370, "holly", "holly")
-createItem(GLOBAL_ROOMS[4], 430, "holly", "holly")
-createItem(GLOBAL_ROOMS[3], 250, "knife", "sword")
+createItem(GLOBAL_ROOMS[4], 500, "holly", "holly")
+createItem(GLOBAL_ROOMS[3], 300, "knife", "sword")
 --sword
 createItem(GLOBAL_ROOMS[9], 220, "knife", "knife")
 createItem(GLOBAL_ROOMS[9], 150, "knife", "knife")
 createItem(GLOBAL_ROOMS[13], 540, "chalk", "chalk")
-createItem(GLOBAL_ROOMS[12], 560, "chalk", "chalk")
+createItem(GLOBAL_ROOMS[12], 150, "chalk", "chalk")
 createItem(GLOBAL_ROOMS[9], 310, "organ", "liver")
 createItem(GLOBAL_ROOMS[8], 650, "organ", "bunny")
 
 createItem(GLOBAL_ROOMS[14], 200, "spork", "spork")
 
-createItem(GLOBAL_ROOMS[4], 160, "plant", "pot-plant")
+createItem(GLOBAL_ROOMS[4], 280, "plant", "pot-plant")
 createItem(GLOBAL_ROOMS[10], 150, "plant", "pot-plant")
 createItem(GLOBAL_ROOMS[8], 350, "plant", "pot-plant")
 createItem(GLOBAL_ROOMS[8], 210, "plant", "pot-plant")
-createItem(GLOBAL_ROOMS[12], 150, "plant", "pot-plant")
+createItem(GLOBAL_ROOMS[12], 560, "plant", "pot-plant")
 
-createItem(GLOBAL_ROOMS[3], 350, "book", "book")
+createItem(GLOBAL_ROOMS[3], 600, "book", "book")
 
 --junk items
-createItem(GLOBAL_ROOMS[10], 710, "holly", "globe")
-createItem(GLOBAL_ROOMS[9], 625, "holly", "cake")
-createItem(GLOBAL_ROOMS[6], 250, "holly", "mirror")
-createItem(GLOBAL_ROOMS[7], 570, "holly", "plate")
+createItem(GLOBAL_ROOMS[10], 710, "junk", "globe")
+createItem(GLOBAL_ROOMS[9], 625, "junk", "cake")
+createItem(GLOBAL_ROOMS[6], 250, "junk", "mirror")
+createItem(GLOBAL_ROOMS[7], 570, "junk", "plate")
 
 --15 cult room
 local taylor = createNPC(GLOBAL_ROOMS[15], 150, "Taylor", "taylor")
