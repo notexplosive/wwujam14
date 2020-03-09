@@ -19,8 +19,6 @@ end
 function DropItemInRoom:isOverlappingDoorOrItem()
     local door = self.actor.CanTraverseDoors:isOverlappingDoor(self.actor.BoundingBox:getRect():inflate(100, 0))
     local item = self.actor.CanHoldItems:isOverlappingItem(self.actor.BoundingBox:getRect():inflate(100, 0))
-    -- isOverlappingDoor
-    -- isOverlappingItem
     return door or item
 end
 
