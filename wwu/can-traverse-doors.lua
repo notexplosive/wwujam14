@@ -32,6 +32,7 @@ function CanTraverseDoors:onInteract()
 			return false
 		end
 
+		self.actor.Floorable:invalidateCache()
 		self.actor:setPos(door.Door:getDestination())
 		return true
 	end

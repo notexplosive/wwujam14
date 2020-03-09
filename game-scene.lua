@@ -5,6 +5,7 @@ local scene = Scene.new()
 local world = scene:addActor()
 world:addComponent(Components.Viewport, 1)
 world:addComponent(Components.CloseOnEscape)
+world:addComponent(Components.EndCondition)
 
 local itemShader = love.graphics.newShader("assets/shaders/item_highlight_temp.glsl")
 
