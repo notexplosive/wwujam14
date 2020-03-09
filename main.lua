@@ -1,4 +1,4 @@
-ALLOW_DEBUG = true
+ALLOW_DEBUG = false
 DEBUG = false
 
 require("nx/util")
@@ -37,7 +37,7 @@ gameScene = require("game-scene")
 sceneLayers:add(gameScene)
 sceneLayers:add(uiScene)
 
-love.graphics.setBackgroundColor(0 / 255, 127 / 255, 255 / 255)
+love.graphics.setBackgroundColor(0, 0, 0)
 
 local music = Assets.sounds["mainmusic"]:get()
 music:setLooping(true)

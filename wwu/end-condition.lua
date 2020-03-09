@@ -1,3 +1,5 @@
+local sceneLayers = require("nx/scene-layers")
+local Scene = require("nx/game/scene")
 local EndCondition = {}
 
 registerComponent(EndCondition, "EndCondition")
@@ -16,6 +18,36 @@ function EndCondition:update(dt)
         self.time = 0
         self:checkWinCondition()
     end
+end
+
+function EndCondition:onKeyPress(key, scancode, wasRelease)
+    if key == "p" then
+        self:adrianWin()
+    end
+end
+
+function EndCondition:adrianWin()
+    sceneLayers:clear()
+    local scene = Scene.new()
+    sceneLayers:add(scene)
+
+    local vp = scene:addActor()
+    vp:addComponent(Components.Viewport, 1)
+    local actor = scene:addActor()
+    actor:addComponent(Components.SpriteRenderer, "spork-end")
+    actor:setPos(950, 525)
+end
+
+function EndCondition:cultWin()
+    sceneLayers:clear()
+    local scene = Scene.new()
+    sceneLayers:add(scene)
+
+    local vp = scene:addActor()
+    vp:addComponent(Components.Viewport, 1)
+    local actor = scene:addActor()
+    actor:addComponent(Components.SpriteRenderer, "cultist-end")
+    actor:setPos(950, 525)
 end
 
 function EndCondition:checkWinCondition()
@@ -58,12 +90,14 @@ function EndCondition:checkWinCondition()
         end
     end
 
-    if candleCount == 6 and organCount == 1 and knifeCount == 1 and chalkCount == 1 and hollyCount == 2 then
-        debugLog("CULT HAS WON")
+    if candleCount == 3 and organCount == 1 and knifeCount == 1 and chalkCount == 1 and hollyCount == 1 then
+        self:cultWin()
+        return
     end
 
     if sporkCondition then
-        debugLog("ADRIAN HAS WON")
+        self:adrianWin()
+        return
     end
 end
 

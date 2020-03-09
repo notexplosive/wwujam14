@@ -45,7 +45,7 @@ end
 
 function Seek:incrementCurrentRoomIndex()
 	local incrementedIndex = self.currentRoomIndex + 1
-	if incrementedIndex > #GLOBAL_ROOMS then
+	if incrementedIndex > #GLOBAL_ROOMS - 4 then
 		incrementedIndex = 1
 	end
 	self.currentRoomIndex = incrementedIndex
@@ -53,7 +53,7 @@ end
 
 function Seek:getNextRoom()
 	local incrementedIndex = self.currentRoomIndex + 1
-	if incrementedIndex > #GLOBAL_ROOMS then
+	if incrementedIndex > #GLOBAL_ROOMS - 4 then
 		incrementedIndex = 1
 	end
 
