@@ -13,6 +13,18 @@ function CanTraverseDoors:getCurrentDoor(givenBounds)
 	return nil
 end
 
+function CanTraverseDoors:isOverlappingDoor(givenBounds)
+	local myBounds = givenBounds or self.actor.BoundingBox:getRect()
+	for i, actor in self.actor:scene():eachActorWith(Components.Door) do
+		local doorBounds = actor.BoundingBox:getRect()
+		if myBounds:getIntersection(doorBounds):area() > 0 then
+			return true
+		end
+	end
+
+	return false
+end
+
 function CanTraverseDoors:onInteract()
 	local door = self:getCurrentDoor()
 	if door then

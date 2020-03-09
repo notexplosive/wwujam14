@@ -1,5 +1,7 @@
-doors player cannot access
+fix drop item
 wait action
+variable walk speed
+
 clock
 background objects
 

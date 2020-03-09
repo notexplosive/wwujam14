@@ -29,6 +29,18 @@ function CanHoldItems:getOverlappedItem(givenBounds)
 	return nil
 end
 
+function CanHoldItems:isOverlappingItem(givenBounds)
+	local myBounds = givenBounds or self.actor.BoundingBox:getRect()
+	for i, actor in self.actor:scene():eachActorWith(Components.Item) do
+		local itemBounds = actor.BoundingBox:getRect()
+		if myBounds:getIntersection(itemBounds):area() > 0 then
+			return true
+		end
+	end
+
+	return false
+end
+
 function CanHoldItems:onInteract()
 	local item = self:getOverlappedItem()
 	if item then
