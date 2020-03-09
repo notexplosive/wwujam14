@@ -336,26 +336,31 @@ josie.Plan:addAction(Components.DropItemInRoom)
 oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
 oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
 oldDude.Plan:addAction(Components.DropItemInRoom)
+oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[5])
 
 oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
 oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[18])
 oldDude.Plan:addAction(Components.DropItemInRoom)
+oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[14])
 
 oldDude.Plan:addAction(Components.NPCWait, 5)
 
 oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
 oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[18])
 oldDude.Plan:addAction(Components.DropItemInRoom)
+oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[14])
 
 oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
 oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
 oldDude.Plan:addAction(Components.DropItemInRoom)
+oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[5])
 
 oldDude.Plan:addAction(Components.NPCWait, 5)
 
 oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
 oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
 oldDude.Plan:addAction(Components.DropItemInRoom)
+oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[5])
 
 --spork hunter
 adrian.Plan:addAction(Components.GetItemInRoom, "spork")
