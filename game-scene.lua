@@ -111,12 +111,12 @@ GLOBAL_ROOMS = {
 	createRoom("Foyer", Vector.new(0, 0), Size.new(750, 300), "background-brick"), --1
 	createRoom("Hallway Upstairs One", Vector.new(0, 500), Size.new(750, 300), "background-brick"), --2
 	createRoom("Library", Vector.new(0, 1000), Size.new(500, 300), "background-brick"), --3
-	createRoom("Balcony", Vector.new(0, 1500), Size.new(500, 300), "background-brick"), --4
+	createRoom("Balcony", Vector.new(0, 1500), Size.new(500, 300), "background-balcony"), --4
 	createRoom("Hallway Upstairs Two", Vector.new(0, 2000), Size.new(1000, 300), "background-brick"), --5
-	createRoom("Bathroom", Vector.new(0, 2500), Size.new(400, 300), "background-brick"), --6
+	createRoom("Bathroom", Vector.new(0, 2500), Size.new(400, 300), "background-kitchen"), --6
 	createRoom("Dining Room", Vector.new(0, 3000), Size.new(750, 300), "background-brick"), --7
-	createRoom("Courtyard", Vector.new(0, 3500), Size.new(500, 300), "background-brick"), --8
-	createRoom("Kitchen", Vector.new(0, 4000), Size.new(500, 300), "background-brick"), --9
+	createRoom("Courtyard", Vector.new(0, 3500), Size.new(500, 300), "background-courtyard"), --8
+	createRoom("Kitchen", Vector.new(0, 4000), Size.new(500, 300), "background-kitchen"), --9
 	createRoom("Living Room", Vector.new(0, 4500), Size.new(500, 300), "background-brick"), --10
 	createRoom("Hallway Downstairs Two", Vector.new(0, 5000), Size.new(500, 300), "background-brick"), --11
 	createRoom("Rec Room", Vector.new(0, 5500), Size.new(750, 300), "background-brick"), --12
@@ -190,9 +190,6 @@ createItem(GLOBAL_ROOMS[2], 350, "spoon", "cake")
 --[[
 local mary = createNPC(GLOBAL_ROOMS[1], 100, "Mary")
 ]]
-local gary = createNPC(GLOBAL_ROOMS[1], 150, "Gary")
-gary.Plan:addAction(Components.GetItemInRoom, "spork")
-gary.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[4])
 --[[
 local john = createNPC(GLOBAL_ROOMS[2], 300, "John")
 
@@ -205,5 +202,137 @@ johnPlan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[2])
 johnPlan:addAction(Components.GetItemInRoom, "fork")
 johnPlan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[4])
 johnPlan:addAction(Components.DropItemInRoom)
+
 ]]
+--15 cult room
+local taylor = createNPC(GLOBAL_ROOMS[15], 150, "Taylor")
+local josie = createNPC(GLOBAL_ROOMS[18], 150, "Josie")
+local oldDude = createNPC(GLOBAL_ROOMS[1], 150, "Guy Jenkins Fury")
+local adrian = createNPC(GLOBAL_ROOMS[1], 250, "Adrian")
+--
+taylor.Plan:addAction(Components.GetItemInRoom, "candle")
+taylor.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
+taylor.Plan:addAction(Components.DropItemInRoom)
+
+taylor.Plan:addAction(Components.GetItemInRoom, "knife")
+taylor.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
+taylor.Plan:addAction(Components.DropItemInRoom)
+
+taylor.Plan:addAction(Components.GetItemInRoom, "candle")
+taylor.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
+taylor.Plan:addAction(Components.DropItemInRoom)
+
+taylor.Plan:addAction(Components.GetItemInRoom, "holly")
+taylor.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
+taylor.Plan:addAction(Components.DropItemInRoom)
+
+taylor.Plan:addAction(Components.GetItemInRoom, "candle")
+taylor.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
+taylor.Plan:addAction(Components.DropItemInRoom)
+
+taylor.Plan:addAction(Components.GetItemInRoom, "organ")
+taylor.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
+taylor.Plan:addAction(Components.DropItemInRoom)
+
+taylor.Plan:addAction(Components.GetItemInRoom, "candle")
+taylor.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
+taylor.Plan:addAction(Components.DropItemInRoom)
+
+taylor.Plan:addAction(Components.GetItemInRoom, "chalk")
+taylor.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
+taylor.Plan:addAction(Components.DropItemInRoom)
+
+taylor.Plan:addAction(Components.GetItemInRoom, "candle")
+taylor.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
+taylor.Plan:addAction(Components.DropItemInRoom)
+
+taylor.Plan:addAction(Components.GetItemInRoom, "holly")
+taylor.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
+taylor.Plan:addAction(Components.DropItemInRoom)
+
+taylor.Plan:addAction(Components.GetItemInRoom, "candle")
+taylor.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
+taylor.Plan:addAction(Components.DropItemInRoom)
+
+--random Candle mover
+
+josie.Plan:addAction(Components.GetItemInRoom, "candle")
+josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[4])
+josie.Plan:addAction(Components.DropItemInRoom)
+
+josie.Plan:addAction(Components.GetItemInRoom, "candle")
+josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[8])
+josie.Plan:addAction(Components.DropItemInRoom)
+
+josie.Plan:addAction(Components.GetItemInRoom, "candle")
+josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[12])
+josie.Plan:addAction(Components.DropItemInRoom)
+
+josie.Plan:addAction(Components.GetItemInRoom, "candle")
+josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[12])
+josie.Plan:addAction(Components.DropItemInRoom)
+
+josie.Plan:addAction(Components.GetItemInRoom, "candle")
+josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[1])
+josie.Plan:addAction(Components.DropItemInRoom)
+
+josie.Plan:addAction(Components.GetItemInRoom, "candle")
+josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[6])
+josie.Plan:addAction(Components.DropItemInRoom)
+
+josie.Plan:addAction(Components.GetItemInRoom, "candle")
+josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[9])
+josie.Plan:addAction(Components.DropItemInRoom)
+
+josie.Plan:addAction(Components.GetItemInRoom, "candle")
+josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[9])
+josie.Plan:addAction(Components.DropItemInRoom)
+
+josie.Plan:addAction(Components.GetItemInRoom, "candle")
+josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[7])
+josie.Plan:addAction(Components.DropItemInRoom)
+
+josie.Plan:addAction(Components.GetItemInRoom, "candle")
+josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[4])
+josie.Plan:addAction(Components.DropItemInRoom)
+
+josie.Plan:addAction(Components.GetItemInRoom, "candle")
+josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[5])
+josie.Plan:addAction(Components.DropItemInRoom)
+
+josie.Plan:addAction(Components.GetItemInRoom, "candle")
+josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[1])
+josie.Plan:addAction(Components.DropItemInRoom)
+
+josie.Plan:addAction(Components.GetItemInRoom, "candle")
+josie.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[13])
+josie.Plan:addAction(Components.DropItemInRoom)
+
+--Plant theif
+
+oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
+oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
+oldDude.Plan:addAction(Components.DropItemInRoom)
+
+oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
+oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[18])
+oldDude.Plan:addAction(Components.DropItemInRoom)
+
+oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
+oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[18])
+oldDude.Plan:addAction(Components.DropItemInRoom)
+
+oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
+oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
+oldDude.Plan:addAction(Components.DropItemInRoom)
+
+oldDude.Plan:addAction(Components.GetItemInRoom, "plant")
+oldDude.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
+oldDude.Plan:addAction(Components.DropItemInRoom)
+
+--spork hunter
+adrian.Plan:addAction(Components.GetItemInRoom, "spork")
+adrian.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[14])
+
+--
 return scene
