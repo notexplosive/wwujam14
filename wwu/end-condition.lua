@@ -90,14 +90,12 @@ function EndCondition:checkWinCondition()
         end
     end
 
-    if candleCount == 6 and organCount == 1 and knifeCount == 1 and chalkCount == 1 and hollyCount == 2 then
-        debugLog("CULT HAS WON")
+    if candleCount == 3 and organCount == 1 and knifeCount == 1 and chalkCount == 1 and hollyCount == 1 then
         self:cultWin()
         return
     end
 
     if sporkCondition then
-        debugLog("ADRIAN HAS WON")
         self:adrianWin()
         return
     end
