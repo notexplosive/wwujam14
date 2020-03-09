@@ -27,7 +27,7 @@ function createItem(room, x, itemName, imageNameIfDifferent)
 	item:setPos(room:pos().x + x, room:pos().y)
 	item:addComponent(Components.Collider, 20)
 	item:addComponent(Components.Item, itemName)
-	item:addComponent(Components.ImageRenderer, imageNameIfDifferent or itemName)
+	item:addComponent(Components.ImageRenderer, imageNameIfDifferent or itemName, true)
 	item.name = itemName
 	return item
 end

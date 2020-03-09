@@ -3,6 +3,6 @@ doors player cannot access
 clock
 background objects
 
-
-assets
 clock
+win and lose condition
+assets
