@@ -70,6 +70,14 @@ function createNPC(room, x, name, spriteName, optionalSpeed)
 	return npc
 end
 
+function createBackgroundObject(room, x, spriteName)
+	assert(room and x and spriteName)
+	local object = scene:addActor()
+	object:setPos(room:pos().x + x, room:pos().y)
+	object:addComponent(Components.Collider, 10)
+	object:addComponent(Components.ImageRenderer, spriteName)
+end
+
 function createDoorPair(room1, room1X, room2, room2X)
 	local doorWidth = 100
 	local door1 = scene:addActor()
@@ -148,6 +156,10 @@ createDoorPair(GLOBAL_ROOMS[12], 700, GLOBAL_ROOMS[13], 50)
 createDoorPair(GLOBAL_ROOMS[13], 375, GLOBAL_ROOMS[16], 50)
 createDoorPair(GLOBAL_ROOMS[13], 700, GLOBAL_ROOMS[17], 50)
 createDoorPair(GLOBAL_ROOMS[14], 375, GLOBAL_ROOMS[18], 50)
+
+-- BACKGROUND ITEMS
+createBackgroundObject(GLOBAL_ROOMS[14], 200, "couch")
+-- /BACKGROUND ITEMS
 
 local player = createPlayer(GLOBAL_ROOMS[14], 100)
 --[[

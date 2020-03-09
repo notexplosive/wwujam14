@@ -1,7 +1,11 @@
+background objects
+
 win and lose condition
-perf optimization
+lose:
+    - adrian gets spork to kitchen
+    - room 15 has: 6 candles, 1 organ, 1 knife, 1 chalk, 2 holly
+win:
+    - surive to 3AM
 
 optional door graphics
-
-background objects
-convert music to ogg
+perf optimization
