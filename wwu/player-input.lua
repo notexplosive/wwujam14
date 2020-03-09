@@ -14,7 +14,7 @@ function PlayerInput:onKeyPress(button, scancode, wasRelease)
 	if button == "left" or button == "right" then
 		self.inputState[button] = not wasRelease
 	end
-	if button == "down" and not wasRelease then
+	if (button == "down" or button == "e") and not wasRelease then
 		self.actor.CanInteract:interact()
 	end
 end

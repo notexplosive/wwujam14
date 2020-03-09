@@ -17,8 +17,9 @@ function DropItemInRoom:update(dt)
 end
 
 function DropItemInRoom:isOverlappingDoorOrItem()
-    return self.actor.CanTraverseDoors:getCurrentDoor(self.actor.BoundingBox:getRect():inflate(100, 0)) ~= nil or
-        self.actor.CanHoldItems:getOverlappedItem(self.actor.BoundingBox:getRect():inflate(100, 0)) ~= nil
+    local door = self.actor.CanTraverseDoors:isOverlappingDoor(self.actor.BoundingBox:getRect():inflate(100, 0))
+    local item = self.actor.CanHoldItems:isOverlappingItem(self.actor.BoundingBox:getRect():inflate(100, 0))
+    return door or item
 end
 
 function DropItemInRoom:getDirection()
