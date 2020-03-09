@@ -23,6 +23,22 @@ function ImageRenderer:draw(x, y)
         floatingHeight = math.sin(self.time * 2) * 5 - 20
     end
 
+    if self.animated then
+        self:itemDraw(x, y, floatingHeight, scale)
+    else
+        love.graphics.setColor(self.color)
+        love.graphics.draw(
+            self.image,
+            x - self.image:getWidth() * scale / 2 * self:getNumberFromFlip(),
+            y - self.image:getHeight() * scale + floatingHeight,
+            0,
+            scale * self:getNumberFromFlip(),
+            scale
+        )
+    end
+end
+
+function ImageRenderer:itemDraw(x, y, floatingHeight, scale)
     love.graphics.setColor(self.color)
     love.graphics.draw(
         self.image,
