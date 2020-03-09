@@ -65,6 +65,9 @@
 			]
 		}
 	],
+	"background-wood": [
+		"Background Wood.png"
+	],
 	"background-brick": [
 		"Background Brick.png"
 	],
@@ -77,8 +80,65 @@
 	"background-kitchen": [
 		"Background Kitchen.png"
 	],
+	"bathtub": [
+		"Bathtub.png"
+	],
+	"bookcase": [
+		"Bookcase.png"
+	],
+	"bunny": [
+		"Bunny.png"
+	],
+	"bust": [
+		"Bust.png"
+	],
+	"chalk": [
+		"Chalk.png"
+	],
+	"chalkboard": [
+		"Chalkboard.png"
+	],
+	"couch": [
+		"Couch.png"
+	],
+	"door-blocked": [
+		"Door Blocked.png"
+	],
+	"door-outside": [
+		"Door Outside.png"
+	],
+	"globe": [
+		"Globe.png"
+	],
+	"mirror": [
+		"Mirror.png"
+	],
+	"painting-3": [
+		"Painting 3.png"
+	],
+	"plate": [
+		"Plate.png"
+	],
+	"pool-table": [
+		"Pool Table.png"
+	],
+	"pot-plant": [
+		"Pot Plant.png"
+	],
+	"sword": [
+		"Sword.png"
+	],
+	"stair": [
+		"Stair.png"
+	],
 	"window": [
 		"Window.png"
+	],
+	"liver": [
+		"Liver.png"
+	],
+	"spork": [
+		"Spork.png"
 	],
 	"linkin": [
 		"linkin.png",
