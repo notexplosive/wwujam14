@@ -39,6 +39,12 @@ function ImageRenderer:draw(x, y)
 end
 
 function ImageRenderer:itemDraw(x, y, floatingHeight, scale)
+    --assert(self.shader, "item expected to have outline shader set")
+    if not self.shader then
+        self.shader = love.graphics.newShader( "assets/shaders/item_highlight_temp.glsl" )
+    end
+
+    
     love.graphics.setColor(self.color)
     love.graphics.draw(
         self.image,
@@ -48,6 +54,21 @@ function ImageRenderer:itemDraw(x, y, floatingHeight, scale)
         scale * self:getNumberFromFlip(),
         scale
     )
+
+    --draw again with outline only.
+    love.graphics.setShader( self.shader )
+    	
+    self.shader:send( "stepSize",{4/self.image:getWidth(),4/self.image:getHeight()} )
+    love.graphics.draw(
+        self.image,
+        x - self.image:getWidth() * scale / 2 * self:getNumberFromFlip(),
+        y - self.image:getHeight() * scale + floatingHeight,
+        0,
+        scale * self:getNumberFromFlip(),
+        scale
+    )
+
+    love.graphics.setShader()
 end
 
 function ImageRenderer:update(dt)
