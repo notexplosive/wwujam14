@@ -56,7 +56,7 @@ function CanHoldItems:isHolding()
 end
 
 function CanHoldItems:getHeldItemName()
-	return self.currentHeldItem.Item.name
+	return self.currentHeldItem.Item.itemName
 end
 
 function CanHoldItems:pickUp(item)

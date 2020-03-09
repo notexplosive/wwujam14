@@ -5,6 +5,7 @@ local scene = Scene.new()
 local world = scene:addActor()
 world:addComponent(Components.Viewport, 1)
 world:addComponent(Components.CloseOnEscape)
+world:addComponent(Components.EndCondition)
 
 function createRoom(name, pos, size, imageName, lockedToPlayer)
 	assert(name and pos and size)
