@@ -52,7 +52,7 @@ function createPlayer(room, x)
 	return player
 end
 
-function createNPC(room, x, name, spriteName)
+function createNPC(room, x, name, spriteName, optionalSpeed)
 	assert(room and x and name)
 	local npc = scene:addActor()
 	npc.name = name
@@ -61,7 +61,7 @@ function createNPC(room, x, name, spriteName)
 	npc:addComponent(Components.CanHoldItems)
 	npc:addComponent(Components.CanTraverseDoors)
 	npc:addComponent(Components.CanDropItems)
-	npc:addComponent(Components.NpcInput)
+	npc:addComponent(Components.NpcInput, optionalSpeed)
 	npc:addComponent(Components.Collider, 20)
 	npc:addComponent(Components.Movement, npc.NpcInput)
 	npc:addComponent(Components.Plan)

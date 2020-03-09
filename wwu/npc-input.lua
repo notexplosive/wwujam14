@@ -2,7 +2,8 @@ local NpcInput = {}
 
 registerComponent(NpcInput, "NpcInput")
 
-function NpcInput:setup()
+function NpcInput:setup(speed)
+	self.speed = speed
 end
 
 function NpcInput:awake()
@@ -26,7 +27,7 @@ function NpcInput:update(dt)
 end
 
 function NpcInput:getSpeed()
-	return 150
+	return self.speed or 150
 end
 
 -- actions need:
