@@ -1,0 +1,16 @@
+  /*
+    https://youtu.be/BkxN2pwwRPM?t=939
+    shader.send( love.graphics.getWidth(),love.graphics.getHeight())
+    shader.send("num_lights_in", -- # lights)
+    shader.send"lights[0].position", {...}
+    shader:send("lights[0].diffuse",
+      1.0, 1.0, 1.0 --light color
+    )
+    shader:send("lights[0].power", 64 )
+    */
+
+also send in time as "u_time", float to candles
+
+for the the outlines, need to pass in "step_size", vec 2 of the # pixels in the image
+"o.shader:send( "stepSize",{1/o.img:getWidth(),1/o.img:getHeight()} )"
+- https://blogs.love2d.org/content/let-it-glow-dynamically-adding-outlines-characters#code

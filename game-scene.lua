@@ -6,6 +6,8 @@ local world = scene:addActor()
 world:addComponent(Components.Viewport, 1)
 world:addComponent(Components.CloseOnEscape)
 
+local itemShader = love.graphics.newShader( "assets/shaders/item_highlight.glsl" )
+
 function createRoom(name, pos, size, imageName, lockedToPlayer)
 	assert(name and pos and size)
 
@@ -47,7 +49,7 @@ function createPlayer(room, x)
 	player:addComponent(Components.Collider, 20)
 	player:addComponent(Components.Movement, player.PlayerInput)
 	player:addComponent(Components.MovementSpriteRenderer, "adrian")
-	player:addComponent(Components.CameraIsOnMe)
+	player:addComponaaeant(Components.CameraIsOnMe)
 
 	return player
 end
@@ -66,6 +68,7 @@ function createNPC(room, x, name, spriteName)
 	npc:addComponent(Components.Movement, npc.NpcInput)
 	npc:addComponent(Components.Plan)
 	npc:addComponent(Components.MovementSpriteRenderer, spriteName or "adrian")
+	npc.setShader(itemShader)
 
 	return npc
 end
