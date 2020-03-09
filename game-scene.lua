@@ -149,7 +149,7 @@ createDoorPair(GLOBAL_ROOMS[13], 375, GLOBAL_ROOMS[16], 50)
 createDoorPair(GLOBAL_ROOMS[13], 700, GLOBAL_ROOMS[17], 50)
 createDoorPair(GLOBAL_ROOMS[14], 375, GLOBAL_ROOMS[18], 50)
 
-local player = createPlayer(GLOBAL_ROOMS[1], 100)
+local player = createPlayer(GLOBAL_ROOMS[10], 100)
 --[[
 	1 foyer 	2 hallway up1 	3 library	4 balcony	5 hallway up2	6 bathroom	7 dining room
 	8 Courtyard 	9 Kitchen	10 living room 	11 hallway down2	12 rec room	13 hallway down 3	14 hallway down 1
@@ -164,7 +164,7 @@ createItem(GLOBAL_ROOMS[8], 150, "candle")
 createItem(GLOBAL_ROOMS[11], 245, "candle")
 createItem(GLOBAL_ROOMS[12], 460, "holly", "holly")
 createItem(GLOBAL_ROOMS[9], 370, "holly", "holly")
-createItem(GLOBAL_ROOMS[4], 160, "holly", "holly")
+createItem(GLOBAL_ROOMS[4], 430, "holly", "holly")
 createItem(GLOBAL_ROOMS[3], 250, "knife", "knife")
 --sword
 createItem(GLOBAL_ROOMS[9], 220, "knife", "knife")
@@ -181,6 +181,8 @@ createItem(GLOBAL_ROOMS[10], 150, "plant", "holly")
 createItem(GLOBAL_ROOMS[8], 350, "plant", "holly")
 createItem(GLOBAL_ROOMS[8], 210, "plant", "holly")
 createItem(GLOBAL_ROOMS[12], 150, "plant", "holly")
+
+createItem(GLOBAL_ROOMS[3], 350, "book", "book")
 
 --[[
 createItem(GLOBAL_ROOMS[1], 160, "plate", "cake")
@@ -205,10 +207,11 @@ johnPlan:addAction(Components.DropItemInRoom)
 
 ]]
 --15 cult room
-local taylor = createNPC(GLOBAL_ROOMS[15], 150, "Taylor")
-local josie = createNPC(GLOBAL_ROOMS[18], 150, "Josie")
-local oldDude = createNPC(GLOBAL_ROOMS[1], 150, "Guy Jenkins Fury")
-local adrian = createNPC(GLOBAL_ROOMS[1], 250, "Adrian")
+local taylor = createNPC(GLOBAL_ROOMS[15], 150, "Taylor", "taylor")
+local josie = createNPC(GLOBAL_ROOMS[18], 150, "Josie", "josie")
+local oldDude = createNPC(GLOBAL_ROOMS[1], 150, "Guy Jenkins Fury", "old-dude")
+local adrian = createNPC(GLOBAL_ROOMS[1], 250, "Adrian", "adrian")
+local frank = createNPC(GLOBAL_ROOMS[16], 250, "Frank", "frank")
 --
 taylor.Plan:addAction(Components.GetItemInRoom, "candle")
 taylor.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[15])
@@ -332,7 +335,18 @@ oldDude.Plan:addAction(Components.DropItemInRoom)
 
 --spork hunter
 adrian.Plan:addAction(Components.GetItemInRoom, "spork")
-adrian.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[14])
+adrian.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[9])
 
---
+--reader
+frank.Plan:addAction(Components.GetItemInRoom, "book")
+frank.Plan:addAction(Components.NPCWait, 5)
+frank.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[16])
+--wait
+
+frank.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[3])
+frank.Plan:addAction(Components.DropItemInRoom)
+--wait
+frank.Plan:addAction(Components.PathfindToRoom, GLOBAL_ROOMS[16])
+--wait
+
 return scene
