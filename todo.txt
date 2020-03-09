@@ -1,10 +1,6 @@
-variable walk speed
-
-clock
-background objects
-
-convert music to ogg
-
 clock
 win and lose condition
-assets
+perf optimization
+
+background objects
+convert music to ogg
