@@ -1,7 +1,7 @@
 win and lose condition
 perf optimization
 
-optional door graphic
+optional door graphics
 
 background objects
 convert music to ogg
