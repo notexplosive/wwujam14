@@ -1,7 +1,9 @@
-items hold higher above your head
 doors player cannot access
+wait action
 clock
 background objects
+
+convert music to ogg
 
 clock
 win and lose condition

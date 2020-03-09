@@ -10,7 +10,7 @@ function PathfindToRoom:update(dt)
 	assert(self.targetRoom)
 	self:calculatePath()
 
-	local nextRoom = self.actor.PathfindToRoom:getNextRoom()
+	local nextRoom = self:getNextRoom()
 	local currentRoom = self.actor.Floorable:getCurrentRoom()
 
 	if nextRoom == currentRoom then

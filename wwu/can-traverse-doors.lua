@@ -16,6 +16,10 @@ end
 function CanTraverseDoors:onInteract()
 	local door = self:getCurrentDoor()
 	if door then
+		if self.actor.PlayerInput and door.Door:getDestinationRoom().Room:isLocked() then
+			return false
+		end
+
 		self.actor:setPos(door.Door:getDestination())
 		return true
 	end

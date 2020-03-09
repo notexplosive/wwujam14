@@ -2,8 +2,9 @@ local Room = {}
 
 registerComponent(Room, "Room")
 
-function Room:setup(floorY)
+function Room:setup(floorY, isLockedToPlayer)
 	self.floorY = floorY
+	self.isLockedToPlayer = isLockedToPlayer
 end
 
 function Room:getFloor()
@@ -57,4 +58,9 @@ function Room:getAllItems()
 
 	return result
 end
+
+function Room:isLocked()
+	return self.isLockedToPlayer
+end
+
 return Room
