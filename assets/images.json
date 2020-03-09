@@ -1,59 +1,239 @@
 {
-  "editor-icons": [
-    "editor-icons.png",
-    32,
-    32,
-    {
-      "create": [1, 1],
-      "delete": [2, 2],
-      "bring-to-front": [3, 3],
-      "send-to-back": [4, 4],
-      "save": [5, 5]
-    }
-  ],
-  "cursor": [
-    "cursor.png",
-    64,
-    64,
-    {
-      "pointer": [1, 1],
-      "selectable": [2, 2],
-      "text": [3, 3],
-      "top-left": [4, 4],
-      "top-right": [5, 5],
-      "left-right": [6, 6],
-      "up-down": [7, 7],
-      "translate": [8, 8]
-    }
-  ],
-  "background-brick": ["Background Brick.png"],
-  "background-balcony": ["Background Balcony.png"],
-  "background-courtyard": ["Background Courtyard.png"],
-  "background-kitchen": ["Background Kitchen.png"],
-  "window": ["Window.png"],
-  "linkin": ["linkin.png", 16, 16, { "walk": [7, 10] }],
-  "numbers": ["numbers.png", 16, 16],
-  "windowchrome": ["window-frame.png", 32, 32],
-  "platform": ["platform.png", 85, 85],
-  "door": ["Door.png"],
-  "cake": ["Cake.png"],
-  "book": ["Book.png"],
-  "candle": ["Candle.png"],
-  "card": ["Card.png"],
-  "holly": ["Holly.png"],
-  "knife": ["Knife.png"],
-  "hour-hand": ["Hour Hand.png"],
-  "minute-hand": ["Minute Hand.png"],
-  "clock-base": ["Clock Base.png"],
-  "dave": ["Dave.png", 337, 739],
-
-
-  "kate": ["Kate.png", 337, 739],
-  "frank": ["Frank.png", 337, 739],
-  
-  "adrian": ["Adrian.png", 337, 739],
-  "dude": ["Dude.png", 337, 739],  
-  "old-dude": ["Old Dude.png", 337, 739],
-  "josie": ["Josie.png", 337, 739],
-  "taylor": ["Taylor.png", 337, 739]
+	"editor-icons": [
+		"editor-icons.png",
+		32,
+		32,
+		{
+			"create": [
+				1,
+				1
+			],
+			"delete": [
+				2,
+				2
+			],
+			"bring-to-front": [
+				3,
+				3
+			],
+			"send-to-back": [
+				4,
+				4
+			],
+			"save": [
+				5,
+				5
+			]
+		}
+	],
+	"cursor": [
+		"cursor.png",
+		64,
+		64,
+		{
+			"pointer": [
+				1,
+				1
+			],
+			"selectable": [
+				2,
+				2
+			],
+			"text": [
+				3,
+				3
+			],
+			"top-left": [
+				4,
+				4
+			],
+			"top-right": [
+				5,
+				5
+			],
+			"left-right": [
+				6,
+				6
+			],
+			"up-down": [
+				7,
+				7
+			],
+			"translate": [
+				8,
+				8
+			]
+		}
+	],
+	"background-wood": [
+		"Background Wood.png"
+	],
+	"background-brick": [
+		"Background Brick.png"
+	],
+	"background-balcony": [
+		"Background Balcony.png"
+	],
+	"background-courtyard": [
+		"Background Courtyard.png"
+	],
+	"background-kitchen": [
+		"Background Kitchen.png"
+	],
+	"bathtub": [
+		"Bathtub.png"
+	],
+	"bookcase": [
+		"Bookcase.png"
+	],
+	"bunny": [
+		"Bunny.png"
+	],
+	"bust": [
+		"Bust.png"
+	],
+	"chalk": [
+		"Chalk.png"
+	],
+	"chalkboard": [
+		"Chalkboard.png"
+	],
+	"couch": [
+		"Couch.png"
+	],
+	"door-blocked": [
+		"Door Blocked.png"
+	],
+	"door-outside": [
+		"Door Outside.png"
+	],
+	"globe": [
+		"Globe.png"
+	],
+	"mirror": [
+		"Mirror.png"
+	],
+	"painting-3": [
+		"Painting 3.png"
+	],
+	"plate": [
+		"Plate.png"
+	],
+	"pool-table": [
+		"Pool Table.png"
+	],
+	"pot-plant": [
+		"Pot Plant.png"
+	],
+	"sword": [
+		"Sword.png"
+	],
+	"stair": [
+		"Stair.png"
+	],
+	"window": [
+		"Window.png"
+	],
+	"liver": [
+		"Liver.png"
+	],
+	"spork": [
+		"Spork.png"
+	],
+	"linkin": [
+		"linkin.png",
+		16,
+		16,
+		{
+			"walk": [
+				7,
+				10
+			]
+		}
+	],
+	"numbers": [
+		"numbers.png",
+		16,
+		16
+	],
+	"windowchrome": [
+		"window-frame.png",
+		32,
+		32
+	],
+	"platform": [
+		"platform.png",
+		85,
+		85
+	],
+	"door": [
+		"Door.png"
+	],
+	"cake": [
+		"Cake.png"
+	],
+	"book": [
+		"Book.png"
+	],
+	"candle": [
+		"Candle.png"
+	],
+	"card": [
+		"Card.png"
+	],
+	"holly": [
+		"Holly.png"
+	],
+	"knife": [
+		"Knife.png"
+	],
+	"hour-hand": [
+		"Hour Hand.png"
+	],
+	"minute-hand": [
+		"Minute Hand.png"
+	],
+	"clock-base": [
+		"Clock Base.png"
+	],
+	"dave": [
+		"Dave.png",
+		337,
+		739
+	],
+	"kate": [
+		"Kate.png",
+		337,
+		739
+	],
+	"frank": [
+		"Frank.png",
+		337,
+		739
+	],
+	"adrian": [
+		"Adrian.png",
+		337,
+		739
+	],
+	"dude": [
+		"Dude.png",
+		337,
+		739
+	],
+	"old-dude": [
+		"Old Dude.png",
+		337,
+		739
+	],
+	"josie": [
+		"Josie.png",
+		337,
+		739
+	],
+	"taylor": [
+		"Taylor.png",
+		337,
+		739
+	]
 }

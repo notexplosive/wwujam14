@@ -1,12 +1,11 @@
-fix drop item
-wait action
-variable walk speed
-
-clock
 background objects
 
-convert music to ogg
-
-clock
 win and lose condition
-assets
+lose:
+    - adrian gets spork to kitchen
+    - room 15 has: 6 candles, 1 organ, 1 knife, 1 chalk, 2 holly
+win:
+    - surive to 3AM
+
+optional door graphics
+perf optimization

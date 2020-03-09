@@ -20,7 +20,7 @@ function ImageRenderer:draw(x, y)
     local scale = 0.25
     local floatingHeight = 0
     if self.animated then
-        floatingHeight = math.sin(self.time * 2) * 5 - 20
+        floatingHeight = math.sin(self.time) * 5 - 20
     end
 
     if self.animated then

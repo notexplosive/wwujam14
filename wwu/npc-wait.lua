@@ -19,7 +19,7 @@ function NPCWait:isFinished()
 end
 
 function NPCWait:talkToResponse()
-	return self.actor.name .. " is hanging out."
+	return "is hanging out."
 end
 
 function NPCWait:isReadyToInteract()
