@@ -1,6 +1,7 @@
-clock
 win and lose condition
 perf optimization
+
+optional door graphic
 
 background objects
 convert music to ogg
