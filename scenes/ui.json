@@ -1,5 +1,5 @@
 {
-  "root": [],
+  "root": [["Viewport", 1]],
   "actors": [
     {
       "components": [
@@ -12,6 +12,10 @@
     },
     {
       "components": [["FramerateCounter"], ["Reporter"]]
+    },
+    {
+      "components": [["Clock"]],
+      "pos": [100, 1000]
     }
   ]
 }
