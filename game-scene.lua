@@ -108,25 +108,25 @@ end
 
 GLOBAL_ROOMS = {
 	-------------------------------------------------------------------
-	createRoom("Foyer", Vector.new(0, 0), Size.new(750, 300), "background-wood"), --1
-	createRoom("Hallway Upstairs One", Vector.new(0, 500), Size.new(750, 300), "background-brick"), --2
-	createRoom("Library", Vector.new(0, 1000), Size.new(500, 300), "background-wood"), --3
-	createRoom("Balcony", Vector.new(0, 1500), Size.new(500, 300), "background-balcony"), --4
-	createRoom("Hallway Upstairs Two", Vector.new(0, 2000), Size.new(1000, 300), "background-brick"), --5
-	createRoom("Bathroom", Vector.new(0, 2500), Size.new(400, 300), "background-kitchen"), --6
-	createRoom("Dining Room", Vector.new(0, 3000), Size.new(750, 300), "background-wood"), --7
-	createRoom("Courtyard", Vector.new(0, 3500), Size.new(500, 300), "background-courtyard"), --8
-	createRoom("Kitchen", Vector.new(0, 4000), Size.new(500, 300), "background-kitchen"), --9
-	createRoom("Living Room", Vector.new(0, 4500), Size.new(500, 300), "background-wood"), --10
-	createRoom("Hallway Downstairs Two", Vector.new(0, 5000), Size.new(500, 300), "background-brick"), --11
-	createRoom("Rec Room", Vector.new(0, 5500), Size.new(750, 300), "background-wood"), --12
-	createRoom("Hallway Downstairs Three", Vector.new(0, 6000), Size.new(750, 300), "background-brick"), --13
-	createRoom("Hallway Downstairs One", Vector.new(0, 6500), Size.new(750, 300), "background-brick"), --14
+	createRoom("Foyer", Vector.new(0, 0), Size.new(1000, 300), "background-wood"), --1
+	createRoom("Hallway Upstairs One", Vector.new(0, 1000), Size.new(1000, 300), "background-brick"), --2
+	createRoom("Library", Vector.new(0, 2000), Size.new(750, 300), "background-wood"), --3
+	createRoom("Balcony", Vector.new(0, 3000), Size.new(750, 300), "background-balcony"), --4
+	createRoom("Hallway Upstairs Two", Vector.new(0, 4000), Size.new(1000, 300), "background-brick"), --5
+	createRoom("Bathroom", Vector.new(0, 5000), Size.new(500, 300), "background-kitchen"), --6
+	createRoom("Dining Room", Vector.new(0, 6000), Size.new(1000, 300), "background-wood"), --7
+	createRoom("Courtyard", Vector.new(0, 7000), Size.new(750, 300), "background-courtyard"), --8
+	createRoom("Kitchen", Vector.new(0, 8000), Size.new(750, 300), "background-kitchen"), --9
+	createRoom("Living Room", Vector.new(0, 9000), Size.new(750, 300), "background-wood"), --10
+	createRoom("Hallway Downstairs Two", Vector.new(0, 10000), Size.new(750, 300), "background-brick"), --11
+	createRoom("Rec Room", Vector.new(0, 11000), Size.new(1000, 300), "background-wood"), --12
+	createRoom("Hallway Downstairs Three", Vector.new(0, 120000), Size.new(1000, 300), "background-brick"), --13
+	createRoom("Hallway Downstairs One", Vector.new(0, 13000), Size.new(1000, 300), "background-brick"), --14
 	--Cult Room
-	createRoom("NPC ONE", Vector.new(0, 7000), Size.new(5000, 300), "background-brick", true), --15
-	createRoom("NPC TWO", Vector.new(0, 7500), Size.new(500, 300), "background-brick", true), --16
-	createRoom("NPC THREE", Vector.new(0, 8000), Size.new(500, 300), "background-brick", true), --17
-	createRoom("NPC FOUR", Vector.new(0, 8500), Size.new(500, 300), "background-brick", true) --18
+	createRoom("NPC ONE", Vector.new(0, 14000), Size.new(5000, 300), "background-brick", true), --15
+	createRoom("NPC TWO", Vector.new(0, 15000), Size.new(500, 300), "background-brick", true), --16
+	createRoom("NPC THREE", Vector.new(0, 16000), Size.new(500, 300), "background-brick", true), --17
+	createRoom("NPC FOUR", Vector.new(0, 17000), Size.new(500, 300), "background-brick", true) --18
 }
 validateRooms(GLOBAL_ROOMS)
 
@@ -172,7 +172,7 @@ createItem(GLOBAL_ROOMS[9], 150, "knife", "knife")
 createItem(GLOBAL_ROOMS[13], 540, "chalk", "chalk")
 createItem(GLOBAL_ROOMS[12], 560, "chalk", "chalk")
 createItem(GLOBAL_ROOMS[9], 310, "organ", "liver")
-createItem(GLOBAL_ROOMS[8], 465, "organ", "bunny")
+createItem(GLOBAL_ROOMS[8], 650, "organ", "bunny")
 
 createItem(GLOBAL_ROOMS[14], 200, "spork", "spork")
 
@@ -183,6 +183,12 @@ createItem(GLOBAL_ROOMS[8], 210, "plant", "pot-plant")
 createItem(GLOBAL_ROOMS[12], 150, "plant", "pot-plant")
 
 createItem(GLOBAL_ROOMS[3], 350, "book", "book")
+
+--junk items
+createItem(GLOBAL_ROOMS[10], 710, "holly", "globe")
+createItem(GLOBAL_ROOMS[9], 625, "holly", "cake")
+createItem(GLOBAL_ROOMS[6], 250, "holly", "mirror")
+createItem(GLOBAL_ROOMS[7], 570, "holly", "plate")
 
 --15 cult room
 local taylor = createNPC(GLOBAL_ROOMS[15], 150, "Taylor", "taylor")
