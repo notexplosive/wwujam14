@@ -4,11 +4,16 @@ registerComponent(CanHoldItems, "CanHoldItems")
 
 function CanHoldItems:awake()
 	self.currentHeldItem = nil
+	self.time = 0
+end
+
+function CanHoldItems:update(dt)
+	self.time = self.time + dt
 end
 
 function CanHoldItems:draw(x, y)
 	if self:isHolding() then
-		self.currentHeldItem:draw(x, y - 25)
+		self.currentHeldItem:draw(x, y - 160)
 	end
 end
 

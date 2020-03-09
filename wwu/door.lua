@@ -8,6 +8,10 @@ function Door:setup(destinationActor)
 	local tr = self.actor:addComponent(Components.TextRenderer, self.destinationActor.Floorable:getCurrentRoom().name)
 	tr.offset.x = -20
 	tr.offset.y = -30
+
+	if self:getDestinationRoom().Room:isLocked() then
+		self.actor.ImageRenderer.color = {0.5, 0.5, 0.75, 1}
+	end
 end
 
 function Door:getDestination()

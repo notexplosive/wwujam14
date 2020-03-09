@@ -6,14 +6,14 @@ local world = scene:addActor()
 world:addComponent(Components.Viewport, 1)
 world:addComponent(Components.CloseOnEscape)
 
-function createRoom(name, pos, size, imageName)
+function createRoom(name, pos, size, imageName, lockedToPlayer)
 	assert(name and pos and size)
 
 	local room = scene:addActor()
 	room.name = name
 	room:setPos(pos)
 	room:addComponent(Components.BoundingBox, size:wh())
-	room:addComponent(Components.Room, 250)
+	room:addComponent(Components.Room, 250, lockedToPlayer)
 	room:addComponent(Components.TextRenderer, name)
 	room:addComponent(Components.BackgroundRenderer, imageName or "background-brick")
 
@@ -27,7 +27,7 @@ function createItem(room, x, itemName, imageNameIfDifferent)
 	item:setPos(room:pos().x + x, room:pos().y)
 	item:addComponent(Components.Collider, 20)
 	item:addComponent(Components.Item, itemName)
-	item:addComponent(Components.ImageRenderer, imageNameIfDifferent or itemName)
+	item:addComponent(Components.ImageRenderer, imageNameIfDifferent or itemName, true)
 	item.name = itemName
 	return item
 end
@@ -123,10 +123,10 @@ GLOBAL_ROOMS = {
 	createRoom("Hallway Downstairs Three", Vector.new(0, 6000), Size.new(750, 300), "background-brick"), --13
 	createRoom("Hallway Downstairs One", Vector.new(0, 6500), Size.new(750, 300), "background-brick"), --14
 	--Cult Room
-	createRoom("NPC ONE", Vector.new(0, 7000), Size.new(5000, 300), "background-brick"), --15
-	createRoom("NPC TWO", Vector.new(0, 7500), Size.new(500, 300), "background-brick"), --16
-	createRoom("NPC THREE", Vector.new(0, 8000), Size.new(500, 300), "background-brick"), --17
-	createRoom("NPC FOUR", Vector.new(0, 8500), Size.new(500, 300), "background-brick") --18
+	createRoom("NPC ONE", Vector.new(0, 7000), Size.new(5000, 300), "background-brick", true), --15
+	createRoom("NPC TWO", Vector.new(0, 7500), Size.new(500, 300), "background-brick", true), --16
+	createRoom("NPC THREE", Vector.new(0, 8000), Size.new(500, 300), "background-brick", true), --17
+	createRoom("NPC FOUR", Vector.new(0, 8500), Size.new(500, 300), "background-brick", true) --18
 }
 validateRooms(GLOBAL_ROOMS)
 
