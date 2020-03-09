@@ -38,3 +38,7 @@ sceneLayers:add(gameScene)
 sceneLayers:add(uiScene)
 
 love.graphics.setBackgroundColor(0 / 255, 127 / 255, 255 / 255)
+
+local music = Assets.sounds["mainmusic"]:get()
+music:setLooping(true)
+music:play()

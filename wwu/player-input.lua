@@ -8,7 +8,7 @@ function PlayerInput:awake()
 end
 
 function PlayerInput:update(dt)
-	self.time = self.time + dt
+	self.time = self.time + (dt / 15)
 end
 
 function PlayerInput:getSpeed()

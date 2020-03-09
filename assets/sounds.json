@@ -1,3 +1,8 @@
 {
-    "ouch": ["ouch.ogg"]
+	"ouch": [
+		"ouch.ogg"
+	],
+	"mainmusic": [
+		"ComplexBallroom.ogg"
+	]
 }
