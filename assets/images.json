@@ -68,6 +68,15 @@
 	"background-wood": [
 		"Background Wood.png"
 	],
+	"cultist-end": [
+		"Cultist End.png"
+	],
+	"win": [
+		"Win.png"
+	],
+	"spork-end": [
+		"Spork End.png"
+	],
 	"background-brick": [
 		"Background Brick.png"
 	],
