@@ -66,6 +66,7 @@ end
 
 function CanHoldItems:dropItem()
 	self.currentHeldItem:setPos(self.actor:pos())
+	self.currentHeldItem.Floorable:invalidateCache()
 	self.actor:scene():addActor(self.currentHeldItem)
 	self.currentHeldItem = nil
 end
