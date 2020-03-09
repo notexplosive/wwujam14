@@ -6,7 +6,7 @@ local world = scene:addActor()
 world:addComponent(Components.Viewport, 1)
 world:addComponent(Components.CloseOnEscape)
 
-local itemShader = love.graphics.newShader( "assets/shaders/item_highlight_temp.glsl" )
+local itemShader = love.graphics.newShader("assets/shaders/item_highlight_temp.glsl")
 
 function createRoom(name, pos, size, imageName, lockedToPlayer)
 	assert(name and pos and size)
@@ -177,7 +177,7 @@ createBackgroundObject(GLOBAL_ROOMS[1], 550, 0, "window")
 
 -- /BACKGROUND ITEMS
 
-local player = createPlayer(GLOBAL_ROOMS[7], 100)
+local player = createPlayer(GLOBAL_ROOMS[8], 100)
 --[[
 	1 foyer 	2 hallway up1 	3 library	4 balcony	5 hallway up2	6 bathroom	7 dining room
 	8 Courtyard 	9 Kitchen	10 living room 	11 hallway down2	12 rec room	13 hallway down 3	14 hallway down 1
